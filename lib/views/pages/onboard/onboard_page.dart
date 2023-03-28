@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
+import 'package:shelf_life/views/pages/authentication/login_page.dart';
+import 'package:shelf_life/views/widgets/primary_button.dart';
 
 import 'content.dart';
 
@@ -89,30 +92,12 @@ class _OnboardPageState extends State<OnboardPage> {
               ),
               Visibility(
                 visible: selectedIndex == splashData.length - 1,
-                child: Container(
-                  height: Adaptive.px(60),
+                child: SizedBox(
                   width: Adaptive.px(317),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      gradient: const LinearGradient(colors: [
-                        ColorClass.primaryColor,
-                        ColorClass.lightPrimaryColor
-                      ])),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Get Started",
-                          style: GoogleFonts.poppins(
-                            fontSize: Adaptive.px(16),
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                          )),
-                      const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                        size: 16,
-                      )
-                    ],
+                  child: PrimaryButton(
+                    onTap: () => Get.to(() => LoginPage()),
+                    isGetStartedButton: true,
+                    text: '',
                   ),
                 ),
               ),
@@ -131,35 +116,7 @@ class _OnboardPageState extends State<OnboardPage> {
               ),
             ],
           ),
-        )
-
-        // Container(
-        //   padding: EdgeInsets.symmetric(horizontal: Adaptive.w(3)),
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.center,
-        //     children: List.generate(
-        //       splashData.length,
-        //       (index) {
-        //         return AnimatedContainer(
-        //           duration: const Duration(milliseconds: 200),
-        //           margin: const EdgeInsets.only(right: 5),
-        //           height: index == 2 ? 40 : 6,
-        //           width: selectedIndex == index ? 30 : 6,
-        //           decoration: BoxDecoration(
-        //             borderRadius: selectedIndex == index
-        //                 ? BorderRadius.circular(5)
-        //                 : BorderRadius.circular(30),
-        //             color: selectedIndex == index
-        //                 ? ColorClass.primaryColor
-        //                 : Colors.grey,
-        //           ),
-        //         );
-        //       },
-        //     ),
-        //   ),
-        // ),
-
-        );
+        ));
   }
 
   AnimatedContainer buildDot({int? index}) {
@@ -167,7 +124,7 @@ class _OnboardPageState extends State<OnboardPage> {
       duration: const Duration(milliseconds: 200),
       margin: const EdgeInsets.only(right: 5),
       height: 6,
-      width: selectedIndex == index ? 30 : 6,
+      width: selectedIndex == index ? Adaptive.px(40) : 6,
       decoration: BoxDecoration(
         borderRadius: selectedIndex == index
             ? BorderRadius.circular(5)
