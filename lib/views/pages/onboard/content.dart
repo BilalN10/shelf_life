@@ -16,7 +16,10 @@ class OnBoardContent extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: Adaptive.h(2)),
-        Image.asset(image),
+        Image.asset(
+          image,
+          fit: BoxFit.cover,
+        ),
         SizedBox(height: Adaptive.h(2)),
         Text(title,
             style: GoogleFonts.poppins(
