@@ -1,36 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
 
-class CommonField extends StatelessWidget {
-  const CommonField({
+class PhoneTextField extends StatelessWidget {
+  const PhoneTextField({
     super.key,
-    required this.controller,
-    required this.keyboardType,
-    required this.prefixIcon,
-    required this.onChanged,
-    required this.validator,
-    required this.hintText,
+    required this.phoneController,
+    required this.maskFormatter,
   });
-  final TextEditingController controller;
-  final TextInputType keyboardType;
-  final String prefixIcon;
-  final Function(String)? onChanged;
-  final String? Function(String?)? validator;
-  final String hintText;
+
+  final TextEditingController phoneController;
+  final MaskTextInputFormatter maskFormatter;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: Get.height * 0.07,
       child: TextFormField(
-        controller: controller,
-        keyboardType: keyboardType,
-        onChanged: onChanged,
-        validator: validator,
+        controller: phoneController,
+        keyboardType: TextInputType.number,
+        onChanged: (onChanged) {},
+        validator: (validator) {
+          return;
+        },
+        inputFormatters: [maskFormatter],
         decoration: InputDecoration(
             fillColor: Colors.white,
             filled: true,
@@ -67,10 +64,10 @@ class CommonField extends StatelessWidget {
                   color: Colors.transparent,
                 )),
             prefixIcon: Image.asset(
-              prefixIcon,
+              IconClass.phone,
               color: const Color(0xff080C2F),
             ),
-            hintText: hintText,
+            hintText: 'Mobile Number',
             hintStyle: GoogleFonts.poppins(
               fontSize: Adaptive.px(14),
               fontWeight: FontWeight.w400,

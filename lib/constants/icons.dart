@@ -5,4 +5,5 @@ class IconClass {
   static const password = 'assets/icons/password.png';
   static const showPass = 'assets/icons/showpass.png';
   static const google = 'assets/icons/google.png';
+  static const phone = 'assets/icons/phone.png';
 }

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
+import 'package:shelf_life/views/pages/authentication/register_page.dart';
 import 'package:shelf_life/views/widgets/common_field.dart';
 import 'package:shelf_life/views/widgets/primary_button.dart';
 
@@ -53,47 +54,42 @@ class _LoginPageState extends State<LoginPage> {
             BoxDecoration(color: ColorClass.lightPrimaryColor.withOpacity(.02)),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: Adaptive.px(24)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: Adaptive.px(68)),
-              Text(
-                'Welcome Back!',
-                style: GoogleFonts.poppins(
-                    fontSize: Adaptive.px(20),
-                    fontWeight: FontWeight.w600,
-                    color: ColorClass.lightPrimaryColor),
-              ),
-              Text(
-                'Sign in with your email/ phone number and password to continue.',
-                style: GoogleFonts.poppins(
-                    fontSize: Adaptive.px(14),
-                    fontWeight: FontWeight.w400,
-                    color: const Color(0xff080C2F).withOpacity(.5)),
-              ),
-              SizedBox(
-                height: Adaptive.px(30),
-              ),
-              CommonField(
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                prefixIcon: IconClass.emailIcon,
-                hintText: 'Email',
-                onChanged: (value) {},
-                validator: (value) {
-                  return;
-                },
-              ),
-              SizedBox(
-                height: Adaptive.px(17),
-              ),
-              Container(
-                width: Adaptive.w(100),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.white,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: Adaptive.px(68)),
+                Text(
+                  'Welcome Back!',
+                  style: GoogleFonts.poppins(
+                      fontSize: Adaptive.px(20),
+                      fontWeight: FontWeight.w600,
+                      color: ColorClass.lightPrimaryColor),
                 ),
-                child: TextFormField(
+                Text(
+                  'Sign in with your email/ phone number and password to continue.',
+                  style: GoogleFonts.poppins(
+                      fontSize: Adaptive.px(14),
+                      fontWeight: FontWeight.w400,
+                      color: const Color(0xff080C2F).withOpacity(.5)),
+                ),
+                SizedBox(
+                  height: Adaptive.px(30),
+                ),
+                CommonField(
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  prefixIcon: IconClass.emailIcon,
+                  hintText: 'Email',
+                  onChanged: (value) {},
+                  validator: (value) {
+                    return;
+                  },
+                ),
+                SizedBox(
+                  height: Adaptive.px(17),
+                ),
+                TextFormField(
                   obscureText: showPass,
                   controller: passwordController,
                   keyboardType: TextInputType.name,
@@ -102,6 +98,8 @@ class _LoginPageState extends State<LoginPage> {
                     return;
                   },
                   decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
                       suffixIcon: _showSuffixIcon
                           ? GestureDetector(
                               onTap: () {
@@ -113,12 +111,36 @@ class _LoginPageState extends State<LoginPage> {
                           : null,
                       contentPadding: EdgeInsets.symmetric(
                           horizontal: 4, vertical: Adaptive.h(2)),
-                      border: InputBorder.none,
-                      errorBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      disabledBorder: InputBorder.none,
-                      focusedErrorBorder: InputBorder.none,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                          )),
+                      errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                          )),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                          )),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(
+                            color: ColorClass.lightPrimaryColor,
+                          )),
+                      disabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                          )),
+                      focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                          )),
                       prefixIcon: Image.asset(
                         IconClass.password,
                         color: const Color(0xff080C2F),
@@ -129,79 +151,80 @@ class _LoginPageState extends State<LoginPage> {
                         fontWeight: FontWeight.w400,
                       )),
                 ),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Forgot Password?',
-                      style: GoogleFonts.poppins(
-                          fontSize: Adaptive.px(12),
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xff080C2F)),
-                    )),
-              ),
-              PrimaryButton(
-                onTap: () {},
-                text: 'Sign In',
-              ),
-              SizedBox(
-                height: Adaptive.px(57),
-              ),
-              Row(
-                children: [
-                  Container(
-                    width: Adaptive.w(20),
-                    height: .5,
-                    color: Colors.black,
-                  ),
-                  SizedBox(
-                    width: Adaptive.w(2),
-                  ),
-                  Text(
-                    'Sign in with Google or Apple',
-                    style: GoogleFonts.poppins(
-                        fontSize: Adaptive.px(12), fontWeight: FontWeight.w400),
-                  ),
-                  SizedBox(
-                    width: Adaptive.w(2),
-                  ),
-                  Container(
-                    width: Adaptive.w(20),
-                    height: .5,
-                    color: Colors.black,
-                  ),
-                ],
-              ),
-              SizedBox(height: Adaptive.px(24)),
-              SocialLogins(
-                appleLoginOnTap: () {},
-                googleLoginOnTap: () {},
-              ),
-              SizedBox(height: Adaptive.px(30)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Don’t have an account? ',
-                    style: GoogleFonts.poppins(
-                      fontSize: Adaptive.px(14),
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  TextButton(
+                Align(
+                  alignment: Alignment.topRight,
+                  child: TextButton(
                       onPressed: () {},
                       child: Text(
-                        'Sign Up',
+                        'Forgot Password?',
                         style: GoogleFonts.poppins(
-                            fontSize: Adaptive.px(14),
+                            fontSize: Adaptive.px(12),
                             fontWeight: FontWeight.w400,
-                            color: ColorClass.lightPrimaryColor),
-                      ))
-                ],
-              ),
-            ],
+                            color: const Color(0xff080C2F)),
+                      )),
+                ),
+                PrimaryButton(
+                  onTap: () {},
+                  text: 'Sign In',
+                ),
+                SizedBox(
+                  height: Adaptive.px(57),
+                ),
+                Row(
+                  children: [
+                    Container(
+                      width: Adaptive.w(20),
+                      height: .5,
+                      color: Colors.black,
+                    ),
+                    SizedBox(
+                      width: Adaptive.w(2),
+                    ),
+                    Text(
+                      'Sign in with Google or Apple',
+                      style: GoogleFonts.poppins(
+                          fontSize: Adaptive.px(12),
+                          fontWeight: FontWeight.w400),
+                    ),
+                    SizedBox(
+                      width: Adaptive.w(2),
+                    ),
+                    Container(
+                      width: Adaptive.w(20),
+                      height: .5,
+                      color: Colors.black,
+                    ),
+                  ],
+                ),
+                SizedBox(height: Adaptive.px(24)),
+                SocialLogins(
+                  appleLoginOnTap: () {},
+                  googleLoginOnTap: () {},
+                ),
+                SizedBox(height: Adaptive.px(30)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Don’t have an account? ',
+                      style: GoogleFonts.poppins(
+                        fontSize: Adaptive.px(14),
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    TextButton(
+                        onPressed: () => Get.to(() => RegisterPage()),
+                        child: Text(
+                          'Sign Up',
+                          style: GoogleFonts.poppins(
+                              fontSize: Adaptive.px(14),
+                              fontWeight: FontWeight.w400,
+                              color: ColorClass.lightPrimaryColor),
+                        ))
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
