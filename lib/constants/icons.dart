@@ -6,4 +6,7 @@ class IconClass {
   static const showPass = 'assets/icons/showpass.png';
   static const google = 'assets/icons/google.png';
   static const phone = 'assets/icons/phone.png';
+  static const forgotpass = 'assets/icons/forgotpass.png';
+  static const back = 'assets/icons/arrowback.png';
+  static const verifyEmail = 'assets/icons/verifyemail.png';
 }

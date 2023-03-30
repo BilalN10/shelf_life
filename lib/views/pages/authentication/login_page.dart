@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
+import 'package:shelf_life/views/pages/authentication/forgot_pass_page.dart';
 import 'package:shelf_life/views/pages/authentication/register_page.dart';
 import 'package:shelf_life/views/widgets/common_field.dart';
 import 'package:shelf_life/views/widgets/primary_button.dart';
@@ -154,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                 Align(
                   alignment: Alignment.topRight,
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () => Get.to(() => ForgotPassPage()),
                       child: Text(
                         'Forgot Password?',
                         style: GoogleFonts.poppins(
