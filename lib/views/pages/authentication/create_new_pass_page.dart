@@ -80,7 +80,58 @@ class CreateNewPassPage extends StatelessWidget {
                 ),
                 SizedBox(height: Adaptive.px(30)),
                 PrimaryButton(
-                  onTap: () {},
+                  onTap: () {
+                    Get.dialog(Scaffold(
+                      backgroundColor: Colors.black12.withOpacity(.2),
+                      body: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: Adaptive.px(357),
+                              width: Adaptive.px(327),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(29),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: Adaptive.px(46)),
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      IconClass.verifyEmail,
+                                      scale: 1.4,
+                                    ),
+                                    SizedBox(height: Adaptive.px(30)),
+                                    Text(
+                                      'Password Changed!',
+                                      style: GoogleFonts.poppins(
+                                          fontSize: Adaptive.px(20),
+                                          fontWeight: FontWeight.w600,
+                                          color: ColorClass.lightPrimaryColor),
+                                    ),
+                                    Center(
+                                      child: Text(
+                                        'Your password has been changed\nsuccessfully,',
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.poppins(
+                                          fontSize: Adaptive.px(14),
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff080C2F)
+                                              .withOpacity(.5),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ));
+                  },
                   text: 'Reset Password',
                 ),
               ],
