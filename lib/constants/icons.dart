@@ -11,4 +11,7 @@ class IconClass {
   static const verifyEmail = 'assets/icons/verifyemail.png';
   static const camera = 'assets/icons/camera.png';
   static const person = 'assets/icons/Profile.png';
+  static const bottomProfile = 'assets/icons/bottomprofile.png';
+  static const product = 'assets/icons/product.png';
+  static const home = 'assets/icons/home.png';
 }

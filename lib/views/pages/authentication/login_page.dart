@@ -6,6 +6,7 @@ import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
 import 'package:shelf_life/views/pages/authentication/forgot_pass_page.dart';
 import 'package:shelf_life/views/pages/authentication/register_page.dart';
+import 'package:shelf_life/views/pages/bottom_nav/bottom_nav_page.dart';
 import 'package:shelf_life/views/widgets/common_field.dart';
 import 'package:shelf_life/views/widgets/primary_button.dart';
 
@@ -165,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                       )),
                 ),
                 PrimaryButton(
-                  onTap: () {},
+                  onTap: () => Get.offAll(() => const BottomNavPage()),
                   text: 'Sign In',
                 ),
                 SizedBox(
