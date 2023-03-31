@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
-import 'package:shelf_life/constants/icons.dart';
 
 class CommonField extends StatelessWidget {
   const CommonField({

@@ -36,7 +36,7 @@ class PinInput extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-        onCompleted: (pin) => print(pin),
+        onCompleted: (pin) {},
       ),
     );
   }

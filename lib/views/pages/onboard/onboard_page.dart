@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
@@ -95,7 +94,7 @@ class _OnboardPageState extends State<OnboardPage> {
                 child: SizedBox(
                   width: Adaptive.px(317),
                   child: PrimaryButton(
-                    onTap: () => Get.to(() => LoginPage()),
+                    onTap: () => Get.to(() => const LoginPage()),
                     isGetStartedButton: true,
                     text: '',
                   ),

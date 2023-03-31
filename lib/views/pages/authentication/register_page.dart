@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -13,6 +12,7 @@ import 'package:shelf_life/views/widgets/primary_button.dart';
 import 'components/phone_textfield.dart';
 import 'components/social_logins.dart';
 
+// ignore: must_be_immutable
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
   final TextEditingController emailController = TextEditingController();
@@ -101,7 +101,7 @@ class RegisterPage extends StatelessWidget {
                     height: Adaptive.px(30),
                   ),
                   PrimaryButton(
-                    onTap: () => Get.to(() => CompleteProfilePage()),
+                    onTap: () => Get.to(() => const CompleteProfilePage()),
                     text: 'Sign UP',
                   ),
                   SizedBox(

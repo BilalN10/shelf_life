@@ -13,7 +13,7 @@ import 'package:shelf_life/views/widgets/primary_button.dart';
 import 'components/social_logins.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
