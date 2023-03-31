@@ -6,6 +6,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
+import 'package:shelf_life/views/pages/complete_profile/complete_profile_page.dart';
 import 'package:shelf_life/views/widgets/common_field.dart';
 import 'package:shelf_life/views/widgets/primary_button.dart';
 
@@ -100,7 +101,7 @@ class RegisterPage extends StatelessWidget {
                     height: Adaptive.px(30),
                   ),
                   PrimaryButton(
-                    onTap: () {},
+                    onTap: () => Get.to(() => CompleteProfilePage()),
                     text: 'Sign UP',
                   ),
                   SizedBox(

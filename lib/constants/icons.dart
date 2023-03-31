@@ -9,4 +9,6 @@ class IconClass {
   static const forgotpass = 'assets/icons/forgotpass.png';
   static const back = 'assets/icons/arrowback.png';
   static const verifyEmail = 'assets/icons/verifyemail.png';
+  static const camera = 'assets/icons/camera.png';
+  static const person = 'assets/icons/Profile.png';
 }

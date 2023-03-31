@@ -14,6 +14,7 @@ class PrimaryButton extends StatelessWidget {
   final VoidCallback onTap;
   bool isGetStartedButton;
   final String text;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
