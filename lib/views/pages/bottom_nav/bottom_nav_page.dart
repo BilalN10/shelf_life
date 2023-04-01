@@ -16,7 +16,7 @@ class BottomNavPage extends StatefulWidget {
 
 class _BottomNavPageState extends State<BottomNavPage> {
   int selectedIndex = 0;
-  final _pages = const [
+  final _pages = [
     HomePage(),
     ProductPage(),
     ProfilePage(),
@@ -24,6 +24,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xffECECEC),
       body: SizedBox(
         height: Adaptive.h(100),
