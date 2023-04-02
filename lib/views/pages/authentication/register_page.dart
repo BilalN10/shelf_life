@@ -94,6 +94,7 @@ class RegisterPage extends StatelessWidget {
                     height: Adaptive.px(15),
                   ),
                   PhoneTextField(
+                    hintText: 'Mobile Number',
                     phoneController: phoneController,
                     maskFormatter: maskFormatter,
                   ),

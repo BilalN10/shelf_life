@@ -24,4 +24,10 @@ class IconClass {
   static const friendly = 'assets/icons/friendly.png';
   static const quickpickup = 'assets/icons/quickpickup.png';
   static const delicious = 'assets/icons/delicious.png';
+  static const ratingStar = 'assets/icons/ratingstar.png';
+  static const personal = 'assets/icons/personal.png';
+  static const forward = 'assets/icons/forward.png';
+  static const changePassword = 'assets/icons/changepassword.png';
+  static const faq = 'assets/icons/faq.png';
+  static const logout = 'assets/icons/logout.png';
 }

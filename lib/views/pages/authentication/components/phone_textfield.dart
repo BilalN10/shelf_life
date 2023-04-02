@@ -11,10 +11,12 @@ class PhoneTextField extends StatelessWidget {
     super.key,
     required this.phoneController,
     required this.maskFormatter,
+    required this.hintText,
   });
 
   final TextEditingController phoneController;
   final MaskTextInputFormatter maskFormatter;
+  final String hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class PhoneTextField extends StatelessWidget {
               IconClass.phone,
               color: const Color(0xff080C2F),
             ),
-            hintText: 'Mobile Number',
+            hintText: hintText,
             hintStyle: GoogleFonts.poppins(
               fontSize: Adaptive.px(14),
               fontWeight: FontWeight.w400,

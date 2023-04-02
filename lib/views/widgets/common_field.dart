@@ -5,7 +5,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 
 class CommonField extends StatelessWidget {
-  const CommonField({
+  CommonField({
     super.key,
     required this.controller,
     required this.keyboardType,
@@ -13,6 +13,7 @@ class CommonField extends StatelessWidget {
     required this.onChanged,
     required this.validator,
     required this.hintText,
+    this.isReadOnly = false,
   });
   final TextEditingController controller;
   final TextInputType keyboardType;
@@ -20,6 +21,7 @@ class CommonField extends StatelessWidget {
   final Function(String)? onChanged;
   final String? Function(String?)? validator;
   final String hintText;
+  bool isReadOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class CommonField extends StatelessWidget {
         keyboardType: keyboardType,
         onChanged: onChanged,
         validator: validator,
+        readOnly: isReadOnly,
         decoration: InputDecoration(
             fillColor: Colors.white,
             filled: true,
