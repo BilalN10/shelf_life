@@ -118,7 +118,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CustomBackButton(),
+                    CustomBackButton(),
                     const Spacer(),
                     Text(
                       'Setup Profile',

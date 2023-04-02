@@ -28,7 +28,7 @@ class ForgotPassPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomBackButton(),
+                CustomBackButton(),
                 Align(
                   child: Image.asset(
                     IconClass.forgotpass,

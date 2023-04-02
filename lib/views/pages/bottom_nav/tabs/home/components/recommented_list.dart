@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/models/recommended_model.dart';
+import 'package:shelf_life/views/pages/bottom_nav/tabs/home/product_detail_page.dart';
 
 class RecommenedList extends StatelessWidget {
   const RecommenedList({
@@ -20,7 +22,9 @@ class RecommenedList extends StatelessWidget {
           return Row(
             children: [
               GestureDetector(
-                onTap: () {},
+                onTap: () => Get.to(() => ProductDetailPage(
+                      modelData: recommendedList[index],
+                    )),
                 child: Container(
                   margin: const EdgeInsets.all(10),
                   height: Adaptive.px(240),

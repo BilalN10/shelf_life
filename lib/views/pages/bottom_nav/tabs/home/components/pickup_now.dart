@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/models/recommended_model.dart';
+import 'package:shelf_life/views/pages/bottom_nav/tabs/home/product_detail_page.dart';
 
 class PickupNow extends StatelessWidget {
   const PickupNow({
@@ -22,7 +24,9 @@ class PickupNow extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () => Get.to(() => ProductDetailPage(
+                    modelData: recommendedList[index],
+                  )),
                   child: Container(
                     height: Adaptive.px(286),
                     width: Adaptive.px(318),

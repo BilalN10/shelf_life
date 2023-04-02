@@ -4,10 +4,11 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/icons.dart';
 
 class CustomBackButton extends StatelessWidget {
-  const CustomBackButton({
+  CustomBackButton({
     super.key,
+    this.isLightColor = false,
   });
-
+  bool isLightColor;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,7 +17,7 @@ class CustomBackButton extends StatelessWidget {
         height: Adaptive.px(51),
         width: Adaptive.px(51),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: isLightColor ? Colors.white.withOpacity(.2) : Colors.white,
           borderRadius: BorderRadius.circular(14),
           boxShadow: [
             BoxShadow(
@@ -24,7 +25,10 @@ class CustomBackButton extends StatelessWidget {
           ],
         ),
         child: Center(
-          child: Image.asset(IconClass.back),
+          child: Image.asset(
+            IconClass.back,
+            color: isLightColor ? Colors.white : Colors.black,
+          ),
         ),
       ),
     );
