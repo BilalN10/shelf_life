@@ -18,7 +18,15 @@ class CounerButton extends StatelessWidget {
         height: Adaptive.px(24),
         width: Adaptive.px(24),
         decoration: BoxDecoration(
-            color: Colors.white.withOpacity(.5), shape: BoxShape.circle),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 4,
+            ),
+          ],
+          color: Colors.white.withOpacity(.5),
+          shape: BoxShape.circle,
+        ),
         child: Center(
           child: Icon(
             icon,

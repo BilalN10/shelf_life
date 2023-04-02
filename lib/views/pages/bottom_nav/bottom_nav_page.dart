@@ -17,7 +17,7 @@ class BottomNavPage extends StatefulWidget {
 class _BottomNavPageState extends State<BottomNavPage> {
   int selectedIndex = 0;
   final _pages = [
-    HomePage(),
+    const HomePage(),
     ProductPage(),
     ProfilePage(),
   ];

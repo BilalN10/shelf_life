@@ -58,3 +58,38 @@ class PrimaryButton extends StatelessWidget {
     );
   }
 }
+
+class SecondaryButton extends StatelessWidget {
+  SecondaryButton({
+    super.key,
+    required this.onTap,
+    required this.text,
+  });
+  final VoidCallback onTap;
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: Adaptive.px(60),
+        width: Adaptive.w(100),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: const Color(0xff46B848).withOpacity(.17),
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: GoogleFonts.poppins(
+                fontSize: Adaptive.px(16),
+                fontWeight: FontWeight.w500,
+                color: ColorClass.lightPrimaryColor),
+          ),
+        ),
+      ),
+    );
+  }
+}

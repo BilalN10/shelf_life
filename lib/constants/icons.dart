@@ -18,4 +18,10 @@ class IconClass {
   static const send = 'assets/icons/send.png';
   static const filter = 'assets/icons/filter.png';
   static const notification = 'assets/icons/Notification.png';
+  static const category = 'assets/icons/Category.png';
+  static const calendar = 'assets/icons/Calendar.png';
+  static const location = 'assets/icons/Location.png';
+  static const friendly = 'assets/icons/friendly.png';
+  static const quickpickup = 'assets/icons/quickpickup.png';
+  static const delicious = 'assets/icons/delicious.png';
 }

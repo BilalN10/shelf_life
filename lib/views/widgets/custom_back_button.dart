@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/icons.dart';
 
+// ignore: must_be_immutable
 class CustomBackButton extends StatelessWidget {
   CustomBackButton({
     super.key,
