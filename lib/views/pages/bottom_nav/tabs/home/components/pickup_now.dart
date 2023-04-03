@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/models/recommended_model.dart';
 import 'package:shelf_life/views/pages/bottom_nav/tabs/home/product_detail_page.dart';
+import 'package:shelf_life/views/pages/profile/seller_profile_page.dart';
 
 class PickupNow extends StatelessWidget {
   const PickupNow({
@@ -25,8 +26,8 @@ class PickupNow extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
                   onTap: () => Get.to(() => ProductDetailPage(
-                    modelData: recommendedList[index],
-                  )),
+                        modelData: recommendedList[index],
+                      )),
                   child: Container(
                     height: Adaptive.px(286),
                     width: Adaptive.px(318),
@@ -54,29 +55,34 @@ class PickupNow extends StatelessWidget {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                CircleAvatar(
-                                  radius: 25,
-                                  backgroundImage: AssetImage(
-                                      recommendedList[index].profileImage),
-                                ),
-                                SizedBox(
-                                  width: Adaptive.px(10),
-                                ),
-                                Padding(
-                                  padding:
-                                      EdgeInsets.only(bottom: Adaptive.px(12)),
-                                  child: Text(
-                                    recommendedList[index].profileName,
-                                    style: GoogleFonts.poppins(
-                                        fontSize: Adaptive.px(14),
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w500),
+                            child: GestureDetector(
+                              onTap: () => Get.to(() => SellerProfilePage(
+                                    recommend: recommendedList[index],
+                                  )),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 25,
+                                    backgroundImage: AssetImage(
+                                        recommendedList[index].profileImage),
                                   ),
-                                ),
-                              ],
+                                  SizedBox(
+                                    width: Adaptive.px(10),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        bottom: Adaptive.px(12)),
+                                    child: Text(
+                                      recommendedList[index].profileName,
+                                      style: GoogleFonts.poppins(
+                                          fontSize: Adaptive.px(14),
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
