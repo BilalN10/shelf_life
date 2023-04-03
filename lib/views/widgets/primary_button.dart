@@ -80,7 +80,7 @@ class PrimaryButton extends StatelessWidget {
 }
 
 class SecondaryButton extends StatelessWidget {
-  SecondaryButton({
+  const SecondaryButton({
     super.key,
     required this.onTap,
     required this.text,

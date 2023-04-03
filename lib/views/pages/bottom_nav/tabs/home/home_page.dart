@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
 import 'package:shelf_life/models/food_prefrence_model.dart';
+import 'package:shelf_life/views/pages/filter/filter_page.dart';
 import 'package:shelf_life/views/widgets/search-field.dart';
 import 'components/pickup_now.dart';
 import 'components/recommented_list.dart';
@@ -64,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                           width: Adaptive.px(15),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () => Get.to(() => const FilterPage()),
                           child: Image.asset(IconClass.filter),
                         ),
                         SizedBox(

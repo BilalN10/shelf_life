@@ -97,9 +97,9 @@ class ProfilePage extends StatelessWidget {
                 ),
                 SizedBox(height: Adaptive.px(10)),
                 ProfileTile(
-                  image: IconClass.faq,
+                  image: IconClass.faq1,
                   title: 'FAQ',
-                  onTap: () => Get.to(() => FaqPage()),
+                  onTap: () => Get.to(() => const FaqPage()),
                 ),
                 SizedBox(height: Adaptive.px(10)),
                 ProfileTile(

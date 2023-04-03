@@ -204,9 +204,9 @@ class FAQQuestion extends StatelessWidget {
                     child: Text(
                       subtitle,
                       style: GoogleFonts.poppins(
-                          fontSize: Adaptive.px(14),
+                          fontSize: Adaptive.px(12),
                           fontWeight: FontWeight.w400,
-                          color: Colors.black),
+                          color: const Color(0xff080C2F)),
                     ),
                   )
                 : const SizedBox(),

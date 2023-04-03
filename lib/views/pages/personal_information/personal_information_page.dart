@@ -110,7 +110,7 @@ class PeronsalInformationPage extends StatelessWidget {
                 ),
                 SizedBox(height: Adaptive.px(20)),
                 PrimaryButton(
-                    onTap: () => Get.to(() => EditInformationPage()),
+                    onTap: () => Get.to(() => const EditInformationPage()),
                     text: 'Edit Information'),
               ],
             ),

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 
+// ignore: must_be_immutable
 class CommonField extends StatelessWidget {
   CommonField({
     super.key,

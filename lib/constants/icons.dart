@@ -30,4 +30,5 @@ class IconClass {
   static const changePassword = 'assets/icons/changepassword.png';
   static const faq = 'assets/icons/faq.png';
   static const logout = 'assets/icons/logout.png';
+  static const faq1 = 'assets/icons/faq1.png';
 }
