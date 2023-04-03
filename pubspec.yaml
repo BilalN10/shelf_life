@@ -43,6 +43,8 @@ dependencies:
   pinput: ^2.2.31
   dotted_border: ^2.0.0+3
   image_picker: ^0.8.7+1
+  intl: ^0.18.0
+  barcode_widget: ^2.0.3
 
 dev_dependencies:
   flutter_test:
