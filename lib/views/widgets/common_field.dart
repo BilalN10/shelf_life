@@ -15,6 +15,7 @@ class CommonField extends StatelessWidget {
     required this.validator,
     required this.hintText,
     this.isReadOnly = false,
+    this.isPrefix = true,
   });
   final TextEditingController controller;
   final TextInputType keyboardType;
@@ -23,7 +24,7 @@ class CommonField extends StatelessWidget {
   final String? Function(String?)? validator;
   final String hintText;
   bool isReadOnly;
-
+  bool isPrefix;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -69,12 +70,15 @@ class CommonField extends StatelessWidget {
                 borderSide: const BorderSide(
                   color: Colors.transparent,
                 )),
-            prefixIcon: Image.asset(
-              prefixIcon,
-              color: const Color(0xff080C2F),
-            ),
+            prefixIcon: isPrefix
+                ? Image.asset(
+                    prefixIcon,
+                    color: const Color(0xff080C2F),
+                  )
+                : SizedBox(),
             hintText: hintText,
             hintStyle: GoogleFonts.poppins(
+              color: const Color(0xff080C2F),
               fontSize: Adaptive.px(14),
               fontWeight: FontWeight.w400,
             )),

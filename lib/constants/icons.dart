@@ -31,4 +31,6 @@ class IconClass {
   static const faq = 'assets/icons/faq.png';
   static const logout = 'assets/icons/logout.png';
   static const faq1 = 'assets/icons/faq1.png';
+  static const arrowDown = 'assets/icons/arrowdown.png';
+  static const bestQuality = 'assets/icons/bestquality.png';
 }
