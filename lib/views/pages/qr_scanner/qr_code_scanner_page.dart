@@ -1,5 +1,6 @@
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/icons.dart';
@@ -15,6 +16,20 @@ class QrCodeScannerPage extends StatefulWidget {
 
 class _QrCodeScannerPageState extends State<QrCodeScannerPage> {
   bool isScan = false;
+  Future<void> scanBarcode() async {
+    String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+      '#FF0000',
+      'Scan the barcode',
+      false,
+      ScanMode.BARCODE,
+    );
+
+    if (barcodeScanRes != '-1') {
+      print('Barcode: $barcodeScanRes');
+    } else {
+      print('User pressed the back button');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +119,9 @@ class _QrCodeScannerPageState extends State<QrCodeScannerPage> {
                 height: Adaptive.px(15),
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  scanBarcode();
+                },
                 child: Container(
                   height: Adaptive.px(60),
                   width: Adaptive.w(100),
