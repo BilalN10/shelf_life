@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/icons.dart';
 import 'package:shelf_life/models/select_feature_model.dart';
+import 'package:shelf_life/views/pages/qr_scanner/qr_code_scanner_page.dart';
 import 'package:shelf_life/views/widgets/common_field.dart';
 import 'package:shelf_life/views/widgets/custom_back_button.dart';
 import 'package:shelf_life/views/widgets/primary_button.dart';
@@ -341,11 +342,25 @@ class _AddProductPageState extends State<AddProductPage> {
                       ),
                 _inputText.isNotEmpty
                     ? Center(
-                        child: BarcodeWidget(
-                          barcode: Barcode.code128(),
-                          data: _inputText,
-                          height: 80,
-                          width: 200,
+                        child: GestureDetector(
+                          onTap: () => Get.to(() => QrCodeScannerPage()),
+                          child: Column(
+                            children: [
+                              Text(
+                                'EAN Number',
+                                style: GoogleFonts.poppins(
+                                    fontSize: Adaptive.px(10),
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              const SizedBox(height: 5),
+                              BarcodeWidget(
+                                barcode: Barcode.code128(),
+                                data: _inputText,
+                                height: 80,
+                                width: 200,
+                              ),
+                            ],
+                          ),
                         ),
                       )
                     : CommonField(
