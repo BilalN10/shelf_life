@@ -25,10 +25,7 @@ class _QrCodeScannerPageState extends State<QrCodeScannerPage> {
     );
 
     if (barcodeScanRes != '-1') {
-      print('Barcode: $barcodeScanRes');
-    } else {
-      print('User pressed the back button');
-    }
+    } else {}
   }
 
   @override
@@ -126,8 +123,9 @@ class _QrCodeScannerPageState extends State<QrCodeScannerPage> {
                   height: Adaptive.px(60),
                   width: Adaptive.w(100),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: const Color(0xffF1F1F1)),
+                    borderRadius: BorderRadius.circular(12),
+                    color: const Color(0xffF1F1F1),
+                  ),
                   child: Center(
                     child: Text(
                       'Retake Photo',

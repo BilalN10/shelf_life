@@ -18,7 +18,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
   int selectedIndex = 0;
   final _pages = [
     const HomePage(),
-    ProductPage(),
+    const ProductPage(),
     ProfilePage(),
   ];
   @override

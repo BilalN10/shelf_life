@@ -69,10 +69,11 @@ class _AddProductPageState extends State<AddProductPage> {
     }
   }
 
-  List<File?> _imageFiles = List.generate(5, (_) => null);
+  final List<File?> _imageFiles = List.generate(5, (_) => null);
 
   Future<void> _takePicture(int index) async {
-    final pickedFile = await ImagePicker().getImage(source: ImageSource.camera);
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.camera);
     if (pickedFile != null) {
       setState(() {
         _imageFiles[index] = File(pickedFile.path);
@@ -343,7 +344,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 _inputText.isNotEmpty
                     ? Center(
                         child: GestureDetector(
-                          onTap: () => Get.to(() => QrCodeScannerPage()),
+                          onTap: () => Get.to(() => const QrCodeScannerPage()),
                           child: Column(
                             children: [
                               Text(

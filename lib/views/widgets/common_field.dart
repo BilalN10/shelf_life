@@ -75,7 +75,7 @@ class CommonField extends StatelessWidget {
                     prefixIcon,
                     color: const Color(0xff080C2F),
                   )
-                : SizedBox(),
+                : const SizedBox(),
             hintText: hintText,
             hintStyle: GoogleFonts.poppins(
               color: const Color(0xff080C2F),

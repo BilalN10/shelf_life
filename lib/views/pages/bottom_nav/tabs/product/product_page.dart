@@ -113,7 +113,8 @@ class ProductPage extends StatelessWidget {
                                 ),
                                 const Spacer(),
                                 GestureDetector(
-                                  onTap: () => Get.to(() => AddProductPage()),
+                                  onTap: () =>
+                                      Get.to(() => const AddProductPage()),
                                   child: Container(
                                     width: Adaptive.px(70),
                                     height: Adaptive.px(30),
@@ -149,7 +150,7 @@ class ProductPage extends StatelessWidget {
                 height: Adaptive.px(10),
               ),
               PrimaryButton(
-                  onTap: () => Get.to(() => AddProductPage()),
+                  onTap: () => Get.to(() => const AddProductPage()),
                   text: 'Add Product'),
             ],
           ),
