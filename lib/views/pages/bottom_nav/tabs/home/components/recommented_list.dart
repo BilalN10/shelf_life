@@ -15,7 +15,7 @@ class RecommenedList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: Adaptive.w(100),
-      height: Adaptive.h(35),
+      height: Adaptive.h(36),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: recommendedList.length,
@@ -28,7 +28,7 @@ class RecommenedList extends StatelessWidget {
                     )),
                 child: Container(
                   margin: const EdgeInsets.all(10),
-                  height: Adaptive.px(240),
+                  height: Adaptive.px(255),
                   width: Adaptive.px(250),
                   decoration: BoxDecoration(
                     color: Colors.white,

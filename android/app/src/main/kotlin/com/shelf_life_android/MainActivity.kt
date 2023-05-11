@@ -1,4 +1,4 @@
-package com.example.shelf_life
+package com.shelf_life_android
 
 import io.flutter.embedding.android.FlutterActivity
 

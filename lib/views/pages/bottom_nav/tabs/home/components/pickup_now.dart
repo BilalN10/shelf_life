@@ -45,7 +45,7 @@ class PickupNow extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          height: Adaptive.h(16),
+                          height: Adaptive.h(14),
                           margin: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(26),

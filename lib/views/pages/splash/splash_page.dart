@@ -36,7 +36,7 @@ class _SplashPageState extends State<SplashPage> {
             SizedBox(
               height: Adaptive.px(40),
             ),
-            SvgPicture.asset(IconClass.appName),
+            SvgPicture.asset(IconClass.appName, height: Get.height * 0.03),
           ],
         ),
       ),

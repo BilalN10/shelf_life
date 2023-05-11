@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "68414250997",
+    "project_id": "shelf-life-ecb4b",
+    "storage_bucket": "shelf-life-ecb4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68414250997:android:c24f8039d5b1ee8e530abc",
+        "android_client_info": {
+          "package_name": "com.shelf_life_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "68414250997-k01aoa3h41lanuq98sb15lt5b9e28prt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuk4hl2wrJsqTHJoLkbH7Wf12RWHaU_RU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "68414250997-k01aoa3h41lanuq98sb15lt5b9e28prt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

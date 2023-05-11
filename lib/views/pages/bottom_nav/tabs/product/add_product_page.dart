@@ -88,346 +88,350 @@ class _AddProductPageState extends State<AddProductPage> {
 
     return Scaffold(
       backgroundColor: const Color(0xffececec),
-      body: SizedBox(
-        height: Adaptive.h(100),
-        width: Adaptive.w(100),
-        child: Padding(
-          padding: EdgeInsets.only(
-              left: Adaptive.px(15),
-              right: Adaptive.px(15),
-              top: Adaptive.px(30)),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    CustomBackButton(),
-                    const Spacer(),
-                    Text(
-                      'Add Product',
-                      style: GoogleFonts.poppins(
-                          fontSize: Adaptive.px(16),
-                          fontWeight: FontWeight.w600),
-                    ),
-                    const Spacer(
-                      flex: 2,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: Adaptive.px(16),
-                ),
-                CommonField(
-                  isPrefix: false,
-                  controller: productNameController,
-                  keyboardType: TextInputType.name,
-                  prefixIcon: IconClass.appIcon,
-                  onChanged: (onChanged) {},
-                  validator: (validator) {
-                    return;
-                  },
-                  hintText: 'Product Name',
-                ),
-                SizedBox(
-                  height: Adaptive.px(15),
-                ),
-                CategoryDropDown(category: category),
-                SizedBox(
-                  height: Adaptive.px(15),
-                ),
-                SelectFoodPrefrences(category: category),
-                SizedBox(
-                  height: Adaptive.px(15),
-                ),
-                DescriptionField(
-                  controller: descriptionController,
-                  validator: (value) {
-                    return;
-                  },
-                ),
-                SizedBox(height: Adaptive.px(15)),
-                Text(
-                  'Select Features',
-                  style: GoogleFonts.poppins(
-                      fontSize: Adaptive.px(16), fontWeight: FontWeight.w600),
-                ),
-                SizedBox(
-                  height: Adaptive.h(20),
-                  width: Adaptive.w(100),
-                  child: GridView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: selectFeatureList.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 1 / .3,
-                    ),
-                    itemBuilder: (context, index) {
-                      return Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectFeatureList[index].value =
-                                    !selectFeatureList[index].value;
-                              });
-                            },
-                            child: Container(
-                              height: Adaptive.px(16),
-                              width: Adaptive.px(16),
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(2),
-                                border: Border.all(
-                                  color: const Color(0xff000000),
-                                ),
-                              ),
-                              child: Center(
-                                child: Icon(
-                                  Icons.done,
-                                  size: 12,
-                                  color: selectFeatureList[index].value
-                                      ? Colors.black
-                                      : Colors.transparent,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Container(
-                            height: Adaptive.px(43),
-                            width: Adaptive.px(43),
-                            decoration: BoxDecoration(
-                              gradient: RadialGradient(
-                                colors: selectFeatureList[index].value
-                                    ? selectFeatureList[index].colors
-                                    : [
-                                        const Color(0xffC9FFEB)
-                                            .withOpacity(.54),
-                                        const Color(0xffC9FFEB)
-                                            .withOpacity(.54),
-                                      ],
-                              ),
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                            child: Center(
-                              child: Image.asset(selectFeatureList[index].value
-                                  ? selectFeatureList[index].image
-                                  : selectFeatureList[index].unselectedIcon),
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Text(
-                            selectFeatureList[index].name,
-                            style: GoogleFonts.poppins(
-                                color: selectFeatureList[index].value
-                                    ? selectFeatureList[index].iconColor
-                                    : const Color(0xff080C2F)),
-                          ),
-                        ],
-                      );
+      body: SafeArea(
+        child: SizedBox(
+          height: Adaptive.h(100),
+          width: Adaptive.w(100),
+          child: Padding(
+            padding: EdgeInsets.only(
+                left: Adaptive.px(15),
+                right: Adaptive.px(15),
+                top: Adaptive.px(30)),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      CustomBackButton(),
+                      const Spacer(),
+                      Text(
+                        'Add Product',
+                        style: GoogleFonts.poppins(
+                            fontSize: Adaptive.px(16),
+                            fontWeight: FontWeight.w600),
+                      ),
+                      const Spacer(
+                        flex: 2,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: Adaptive.px(16),
+                  ),
+                  CommonField(
+                    isPrefix: false,
+                    controller: productNameController,
+                    keyboardType: TextInputType.name,
+                    prefixIcon: IconClass.appIcon,
+                    onChanged: (onChanged) {},
+                    validator: (validator) {
+                      return;
+                    },
+                    hintText: 'Product Name',
+                  ),
+                  SizedBox(
+                    height: Adaptive.px(15),
+                  ),
+                  CategoryDropDown(category: category),
+                  SizedBox(
+                    height: Adaptive.px(15),
+                  ),
+                  SelectFoodPrefrences(category: category),
+                  SizedBox(
+                    height: Adaptive.px(15),
+                  ),
+                  DescriptionField(
+                    controller: descriptionController,
+                    validator: (value) {
+                      return;
                     },
                   ),
-                ),
-                CommonField(
-                  isPrefix: false,
-                  controller: quantityController,
-                  keyboardType: TextInputType.number,
-                  prefixIcon: IconClass.appIcon,
-                  onChanged: (onChanged) {},
-                  validator: (validator) {
-                    return;
-                  },
-                  hintText: 'Quantity',
-                ),
-                SizedBox(height: Adaptive.px(15)),
-                Text(
-                  'Select Price Options:',
-                  style: GoogleFonts.poppins(
-                      fontSize: Adaptive.px(16), fontWeight: FontWeight.w600),
-                ),
-                Row(
-                  children: List.generate(
-                    radioText.length,
-                    (index) => Row(
-                      children: [
-                        Radio(
-                          value: index,
-                          groupValue: _selectedIndex,
-                          onChanged: (value) {
-                            setState(() {
-                              _selectedIndex = value!;
-                            });
-                          },
-                        ),
-                        Text(
-                          radioText[index],
-                        ),
-                      ],
+                  SizedBox(height: Adaptive.px(15)),
+                  Text(
+                    'Select Features',
+                    style: GoogleFonts.poppins(
+                        fontSize: Adaptive.px(16), fontWeight: FontWeight.w600),
+                  ),
+                  SizedBox(
+                    height: Adaptive.h(20),
+                    width: Adaptive.w(100),
+                    child: GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: selectFeatureList.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 1 / .3,
+                      ),
+                      itemBuilder: (context, index) {
+                        return Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectFeatureList[index].value =
+                                      !selectFeatureList[index].value;
+                                });
+                              },
+                              child: Container(
+                                height: Adaptive.px(16),
+                                width: Adaptive.px(16),
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  borderRadius: BorderRadius.circular(2),
+                                  border: Border.all(
+                                    color: const Color(0xff000000),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Icon(
+                                    Icons.done,
+                                    size: 12,
+                                    color: selectFeatureList[index].value
+                                        ? Colors.black
+                                        : Colors.transparent,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 5),
+                            Container(
+                              height: Adaptive.px(43),
+                              width: Adaptive.px(43),
+                              decoration: BoxDecoration(
+                                gradient: RadialGradient(
+                                  colors: selectFeatureList[index].value
+                                      ? selectFeatureList[index].colors
+                                      : [
+                                          const Color(0xffC9FFEB)
+                                              .withOpacity(.54),
+                                          const Color(0xffC9FFEB)
+                                              .withOpacity(.54),
+                                        ],
+                                ),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Center(
+                                child: Image.asset(selectFeatureList[index]
+                                        .value
+                                    ? selectFeatureList[index].image
+                                    : selectFeatureList[index].unselectedIcon),
+                              ),
+                            ),
+                            const SizedBox(width: 5),
+                            Text(
+                              selectFeatureList[index].name,
+                              style: GoogleFonts.poppins(
+                                  color: selectFeatureList[index].value
+                                      ? selectFeatureList[index].iconColor
+                                      : const Color(0xff080C2F)),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ),
-                ),
-                _selectedIndex == 0
-                    ? Column(
+                  CommonField(
+                    isPrefix: false,
+                    controller: quantityController,
+                    keyboardType: TextInputType.number,
+                    prefixIcon: IconClass.appIcon,
+                    onChanged: (onChanged) {},
+                    validator: (validator) {
+                      return;
+                    },
+                    hintText: 'Quantity',
+                  ),
+                  SizedBox(height: Adaptive.px(15)),
+                  Text(
+                    'Select Price Options:',
+                    style: GoogleFonts.poppins(
+                        fontSize: Adaptive.px(16), fontWeight: FontWeight.w600),
+                  ),
+                  Row(
+                    children: List.generate(
+                      radioText.length,
+                      (index) => Row(
                         children: [
-                          CommonField(
-                            controller: fixPriceControllerController,
-                            keyboardType: TextInputType.number,
-                            prefixIcon: IconClass.appIcon,
-                            onChanged: (onChanged) {
+                          Radio(
+                            value: index,
+                            groupValue: _selectedIndex,
+                            onChanged: (value) {
                               setState(() {
-                                _inputText = onChanged;
+                                _selectedIndex = value!;
                               });
                             },
-                            validator: (validator) {
-                              return;
-                            },
-                            hintText: 'Price',
-                            isPrefix: false,
                           ),
-                          SizedBox(
-                            height: Adaptive.px(15),
-                          ),
-                        ],
-                      )
-                    : Column(
-                        children: [
-                          CommonField(
-                            controller: offerPriceControllerController,
-                            keyboardType: TextInputType.number,
-                            prefixIcon: IconClass.appIcon,
-                            onChanged: (onChanged) {},
-                            validator: (validator) {
-                              return;
-                            },
-                            hintText: 'Price',
-                            isPrefix: false,
-                          ),
-                          SizedBox(
-                            height: Adaptive.px(15),
-                          ),
-                          CommonField(
-                            controller: discountPriceControllerController,
-                            keyboardType: TextInputType.number,
-                            prefixIcon: IconClass.appIcon,
-                            onChanged: (onChanged) {},
-                            validator: (validator) {
-                              return;
-                            },
-                            hintText: 'Price',
-                            isPrefix: false,
-                          ),
-                          SizedBox(
-                            height: Adaptive.px(15),
-                          ),
-                          CommonField(
-                            controller: otherPriceControllerController,
-                            keyboardType: TextInputType.number,
-                            prefixIcon: IconClass.appIcon,
-                            onChanged: (onChanged) {
-                              setState(() {
-                                _inputText = onChanged;
-                              });
-                            },
-                            validator: (validator) {
-                              return;
-                            },
-                            hintText: 'Price',
-                            isPrefix: false,
-                          ),
-                          SizedBox(
-                            height: Adaptive.px(15),
+                          Text(
+                            radioText[index],
                           ),
                         ],
                       ),
-                _inputText.isNotEmpty
-                    ? Center(
-                        child: GestureDetector(
-                          onTap: () => Get.to(() => const QrCodeScannerPage()),
-                          child: Column(
-                            children: [
-                              Text(
-                                'EAN Number',
-                                style: GoogleFonts.poppins(
-                                    fontSize: Adaptive.px(10),
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              const SizedBox(height: 5),
-                              BarcodeWidget(
-                                barcode: Barcode.code128(),
-                                data: _inputText,
-                                height: 80,
-                                width: 200,
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                    : CommonField(
-                        controller: eanController,
-                        keyboardType: TextInputType.number,
-                        prefixIcon: IconClass.appIcon,
-                        isReadOnly: true,
-                        onChanged: (onChanged) {},
-                        validator: (validator) {
-                          return;
-                        },
-                        hintText: 'EAN Code',
-                        isPrefix: false,
-                      ),
-                SizedBox(
-                  height: Adaptive.px(15),
-                ),
-                Container(
-                  height: Get.height * 0.06,
-                  width: Adaptive.w(100),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: Adaptive.w(12)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          formatted.isEmpty ? 'Expiry Date' : formatted,
-                          style: GoogleFonts.poppins(
-                            fontSize: Adaptive.px(14),
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            _selectDate(context);
-                          },
-                          child: Image.asset(IconClass.calendar),
-                        ),
-                      ],
                     ),
                   ),
-                ),
-                SizedBox(
-                    height: Adaptive.h(15),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
+                  _selectedIndex == 0
+                      ? Column(
+                          children: [
+                            CommonField(
+                              controller: fixPriceControllerController,
+                              keyboardType: TextInputType.number,
+                              prefixIcon: IconClass.appIcon,
+                              onChanged: (onChanged) {
+                                setState(() {
+                                  _inputText = onChanged;
+                                });
+                              },
+                              validator: (validator) {
+                                return;
+                              },
+                              hintText: 'Price',
+                              isPrefix: false,
+                            ),
+                            SizedBox(
+                              height: Adaptive.px(15),
+                            ),
+                          ],
+                        )
+                      : Column(
+                          children: [
+                            CommonField(
+                              controller: offerPriceControllerController,
+                              keyboardType: TextInputType.number,
+                              prefixIcon: IconClass.appIcon,
+                              onChanged: (onChanged) {},
+                              validator: (validator) {
+                                return;
+                              },
+                              hintText: 'Price',
+                              isPrefix: false,
+                            ),
+                            SizedBox(
+                              height: Adaptive.px(15),
+                            ),
+                            CommonField(
+                              controller: discountPriceControllerController,
+                              keyboardType: TextInputType.number,
+                              prefixIcon: IconClass.appIcon,
+                              onChanged: (onChanged) {},
+                              validator: (validator) {
+                                return;
+                              },
+                              hintText: 'Price',
+                              isPrefix: false,
+                            ),
+                            SizedBox(
+                              height: Adaptive.px(15),
+                            ),
+                            CommonField(
+                              controller: otherPriceControllerController,
+                              keyboardType: TextInputType.number,
+                              prefixIcon: IconClass.appIcon,
+                              onChanged: (onChanged) {
+                                setState(() {
+                                  _inputText = onChanged;
+                                });
+                              },
+                              validator: (validator) {
+                                return;
+                              },
+                              hintText: 'Price',
+                              isPrefix: false,
+                            ),
+                            SizedBox(
+                              height: Adaptive.px(15),
+                            ),
+                          ],
+                        ),
+                  _inputText.isNotEmpty
+                      ? Center(
+                          child: GestureDetector(
+                            onTap: () =>
+                                Get.to(() => const QrCodeScannerPage()),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'EAN Number',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: Adaptive.px(10),
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                const SizedBox(height: 5),
+                                BarcodeWidget(
+                                  barcode: Barcode.code128(),
+                                  data: _inputText,
+                                  height: 80,
+                                  width: 200,
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      : CommonField(
+                          controller: eanController,
+                          keyboardType: TextInputType.number,
+                          prefixIcon: IconClass.appIcon,
+                          isReadOnly: true,
+                          onChanged: (onChanged) {},
+                          validator: (validator) {
+                            return;
+                          },
+                          hintText: 'EAN Code',
+                          isPrefix: false,
+                        ),
+                  SizedBox(
+                    height: Adaptive.px(15),
+                  ),
+                  Container(
+                    height: Get.height * 0.06,
+                    width: Adaptive.w(100),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: Adaptive.w(12)),
                       child: Row(
-                        children:
-                            List.generate(5, (index) => _buildContainer(index)),
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            formatted.isEmpty ? 'Expiry Date' : formatted,
+                            style: GoogleFonts.poppins(
+                              fontSize: Adaptive.px(14),
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              _selectDate(context);
+                            },
+                            child: Image.asset(IconClass.calendar),
+                          ),
+                        ],
                       ),
-                    )),
-                SizedBox(
-                  height: Adaptive.px(15),
-                ),
-                PrimaryButton(
-                  onTap: () {},
-                  text: 'Add Product',
-                ),
-                SizedBox(
-                  height: Adaptive.px(15),
-                ),
-              ],
+                    ),
+                  ),
+                  SizedBox(
+                      height: Adaptive.h(15),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: List.generate(
+                              5, (index) => _buildContainer(index)),
+                        ),
+                      )),
+                  SizedBox(
+                    height: Adaptive.px(15),
+                  ),
+                  PrimaryButton(
+                    onTap: () {},
+                    text: 'Add Product',
+                  ),
+                  SizedBox(
+                    height: Adaptive.px(15),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

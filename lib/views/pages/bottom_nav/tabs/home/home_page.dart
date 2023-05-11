@@ -49,51 +49,64 @@ class _HomePageState extends State<HomePage> {
             ),
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: Adaptive.px(20), vertical: Adaptive.px(32)),
+                  horizontal: Adaptive.px(0), vertical: Adaptive.px(32)),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: Adaptive.w(70),
-                          child: SearchField(
-                            controller: searchController,
-                            onChanged: (onChanged) {},
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: Adaptive.px(20)),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: Adaptive.w(70),
+                            child: SearchField(
+                              controller: searchController,
+                              onChanged: (onChanged) {},
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: Adaptive.px(15),
-                        ),
-                        GestureDetector(
-                          onTap: () => Get.to(() => const FilterPage()),
-                          child: Image.asset(IconClass.filter),
-                        ),
-                        SizedBox(
-                          width: Adaptive.px(21),
-                        ),
-                        GestureDetector(
-                          onTap: () => Get.to(() => const NotificationPage()),
-                          child: Image.asset(IconClass.notification),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: Adaptive.px(30)),
-                    Text(
-                      'Category',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: Adaptive.px(16),
+                          SizedBox(
+                            width: Adaptive.px(15),
+                          ),
+                          GestureDetector(
+                            onTap: () => Get.to(() => const FilterPage()),
+                            child: Image.asset(IconClass.filter),
+                          ),
+                          SizedBox(
+                            width: Adaptive.px(21),
+                          ),
+                          GestureDetector(
+                            onTap: () => Get.to(() => const NotificationPage()),
+                            child: Image.asset(IconClass.notification),
+                          ),
+                        ],
                       ),
                     ),
-                    Text(
-                      'Find your product quickly  ',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xff080C2F).withOpacity(.5),
-                        fontSize: Adaptive.px(14),
+                    SizedBox(height: Adaptive.px(30)),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: Adaptive.px(20)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Category',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                              fontSize: Adaptive.px(16),
+                            ),
+                          ),
+                          Text(
+                            'Find your product quickly  ',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff080C2F).withOpacity(.5),
+                              fontSize: Adaptive.px(14),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(height: Adaptive.px(15)),
@@ -157,21 +170,29 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     SizedBox(height: Adaptive.px(30)),
-                    Text(
-                      'Recommended for you',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: Adaptive.px(16),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: Adaptive.px(20)),
+                      child: Text(
+                        'Recommended for you',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                          fontSize: Adaptive.px(16),
+                        ),
                       ),
                     ),
                     const RecommenedList(),
-                    Text(
-                      'Pick up Now',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: Adaptive.px(16),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: Adaptive.px(20)),
+                      child: Text(
+                        'Pick up Now',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                          fontSize: Adaptive.px(16),
+                        ),
                       ),
                     ),
                     const PickupNow(),

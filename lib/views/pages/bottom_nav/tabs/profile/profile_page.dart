@@ -27,16 +27,18 @@ class ProfilePage extends StatelessWidget {
         width: Adaptive.w(100),
         child: Padding(
           padding: EdgeInsets.only(
-              left: Adaptive.px(29),
-              right: Adaptive.px(29),
-              top: Adaptive.px(30)),
+              left: Adaptive.px(10),
+              right: Adaptive.px(10),
+              top: Adaptive.px(35)),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Row(
                   children: [
                     CustomBackButton(),
-                    const Spacer(),
+                    const Spacer(
+                      flex: 2,
+                    ),
                     Text(
                       'My Profile',
                       style: GoogleFonts.poppins(
@@ -44,7 +46,7 @@ class ProfilePage extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     const Spacer(
-                      flex: 2,
+                      flex: 3,
                     ),
                   ],
                 ),

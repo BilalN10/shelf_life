@@ -82,15 +82,15 @@ class _BottomNavPageState extends State<BottomNavPage> {
                 : const Color(0xff000000).withOpacity(.5),
           ),
           SizedBox(height: Adaptive.px(6.37)),
-          Text(
-            title,
-            style: GoogleFonts.poppins(
-                fontSize: Adaptive.px(15),
-                fontWeight: FontWeight.w400,
-                color: index == selectedIndex
-                    ? ColorClass.lightPrimaryColor
-                    : const Color(0xff000000).withOpacity(.5)),
-          )
+          // Text(
+          //   title,
+          //   style: GoogleFonts.poppins(
+          //       fontSize: Adaptive.px(15),
+          //       fontWeight: FontWeight.w400,
+          //       color: index == selectedIndex
+          //           ? ColorClass.lightPrimaryColor
+          //           : const Color(0xff000000).withOpacity(.5)),
+          // )
         ],
       ),
     );

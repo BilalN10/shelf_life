@@ -55,10 +55,7 @@ class _OnboardPageState extends State<OnboardPage> {
               SizedBox(
                 width: Adaptive.w(2),
               ),
-              SvgPicture.asset(
-                IconClass.appName,
-                height: Adaptive.h(5),
-              ),
+              SvgPicture.asset(IconClass.appName, height: Adaptive.h(3)),
             ],
           ),
           centerTitle: true,
