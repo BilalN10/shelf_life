@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
+import 'package:shelf_life/controllers/auth_controller.dart';
 import 'package:shelf_life/views/pages/bottom_nav/tabs/home/home_page.dart';
 import 'package:shelf_life/views/pages/bottom_nav/tabs/product/product_page.dart';
 import 'package:shelf_life/views/pages/bottom_nav/tabs/profile/profile_page.dart';
@@ -15,12 +17,19 @@ class BottomNavPage extends StatefulWidget {
 }
 
 class _BottomNavPageState extends State<BottomNavPage> {
+  AuthController authController = Get.put(AuthController());
   int selectedIndex = 0;
   final _pages = [
     const HomePage(),
     const ProductPage(),
     ProfilePage(),
   ];
+  @override
+  void initState() {
+    authController.getUser();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

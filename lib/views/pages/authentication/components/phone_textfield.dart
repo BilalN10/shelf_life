@@ -12,10 +12,13 @@ class PhoneTextField extends StatelessWidget {
     required this.phoneController,
     required this.maskFormatter,
     required this.hintText,
+    this.validator,
   });
 
   final TextEditingController phoneController;
   final MaskTextInputFormatter maskFormatter;
+  final String? Function(String?)? validator;
+
   final String hintText;
 
   @override
@@ -26,9 +29,7 @@ class PhoneTextField extends StatelessWidget {
         controller: phoneController,
         keyboardType: TextInputType.number,
         onChanged: (onChanged) {},
-        validator: (validator) {
-          return;
-        },
+        validator: validator,
         inputFormatters: [maskFormatter],
         decoration: InputDecoration(
             fillColor: Colors.white,

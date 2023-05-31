@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:shelf_life/controllers/auth_controller.dart';
 import 'package:shelf_life/views/pages/authentication/login_page.dart';
 import 'package:shelf_life/views/widgets/primary_button.dart';
 
 class LogoutDialog extends StatelessWidget {
-  const LogoutDialog({
+  LogoutDialog({
     super.key,
   });
-
+  final AuthController authController = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +76,9 @@ class LogoutDialog extends StatelessWidget {
                           height: Adaptive.px(43),
                           width: Adaptive.px(112),
                           child: PrimaryButton(
-                            onTap: () => Get.offAll(() => const LoginPage()),
+                            onTap: () {
+                              authController.signOut();
+                            },
                             text: 'Logout',
                           ),
                         )

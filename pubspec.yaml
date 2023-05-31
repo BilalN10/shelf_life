@@ -47,7 +47,13 @@ dependencies:
   barcode_widget: ^2.0.3
   flutter_barcode_scanner: ^2.0.0
   expandable_text: ^2.3.0
-  change_app_package_name: ^1.1.0
+  firebase_auth: ^4.0.0
+  cloud_firestore:
+  firebase_storage:
+  firebase_core:
+  connectivity_plus: ^4.0.0
+  onesignal_flutter: ^3.5.0
+  
 
 dev_dependencies:
   flutter_test:

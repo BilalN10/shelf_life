@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
+import 'package:shelf_life/controllers/auth_controller.dart';
 import 'package:shelf_life/views/pages/change_pass/change_pass_page.dart';
 import 'package:shelf_life/views/pages/faq/faq_page.dart';
 import 'package:shelf_life/views/pages/personal_information/personal_information_page.dart';
@@ -14,10 +15,26 @@ import 'components/delete_account_dialog.dart';
 import 'components/logout_dialog.dart';
 import 'components/profile_tile.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
+
+  AuthController authController = Get.put(AuthController());
+
+  @override
+  void initState() {
+    authController.getUser();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,47 +67,67 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  width: Adaptive.w(40),
-                  height: Adaptive.h(25),
-                  child: DottedBorder(
-                    color: ColorClass.lightPrimaryColor,
-                    strokeWidth: 2,
-                    borderType: BorderType.Circle,
-                    dashPattern: const [5, 6],
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/profileimage.png',
-                      ),
-                    ),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(IconClass.ratingStar),
-                    const SizedBox(width: 6),
-                    Text(
-                      '4.7',
-                      style: GoogleFonts.poppins(
-                          fontSize: Adaptive.px(22),
-                          fontWeight: FontWeight.w700),
-                    ),
-                    Text(
-                      ' / 5',
-                      style: GoogleFonts.poppins(
-                          fontSize: Adaptive.px(10),
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xff222222).withOpacity(.4)),
-                    ),
-                  ],
-                ),
-                SizedBox(height: Adaptive.px(30)),
-                ProfileTile(
-                  image: IconClass.personal,
-                  title: 'Personal Information',
-                  onTap: () => Get.to(() => PeronsalInformationPage()),
-                ),
+                GetX<AuthController>(
+                    init: authController,
+                    builder: (cont) {
+                      return cont.getUserData.email == null
+                          ? const CircularProgressIndicator(
+                              color: ColorClass.primaryColor,
+                            )
+                          : Column(
+                              children: [
+                                SizedBox(
+                                  width: Adaptive.w(40),
+                                  height: Adaptive.h(25),
+                                  child: DottedBorder(
+                                    color: ColorClass.lightPrimaryColor,
+                                    strokeWidth: 2,
+                                    borderType: BorderType.Circle,
+                                    dashPattern: const [5, 6],
+                                    child: Center(
+                                      child: CircleAvatar(
+                                        radius: 80,
+                                        backgroundImage: NetworkImage(
+                                            cont.getUserData.profilePic!),
+                                        //   child: Image.network(
+                                        //       cont.getUserData.profilePic!),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(IconClass.ratingStar),
+                                    const SizedBox(width: 6),
+                                    Text(
+                                      cont.getUserData.totalRating!.toString(),
+                                      style: GoogleFonts.poppins(
+                                          fontSize: Adaptive.px(22),
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                    Text(
+                                      ' / 5',
+                                      style: GoogleFonts.poppins(
+                                          fontSize: Adaptive.px(10),
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xff222222)
+                                              .withOpacity(.4)),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: Adaptive.px(30)),
+                                ProfileTile(
+                                  image: IconClass.personal,
+                                  title: 'Personal Information',
+                                  onTap: () =>
+                                      Get.to(() => PeronsalInformationPage(
+                                            userModel: cont.getUserData,
+                                          )),
+                                ),
+                              ],
+                            );
+                    }),
                 SizedBox(height: Adaptive.px(10)),
                 ProfileTile(
                   image: IconClass.changePassword,
@@ -108,7 +145,7 @@ class ProfilePage extends StatelessWidget {
                   image: IconClass.logout,
                   title: 'Logout',
                   onTap: () {
-                    Get.dialog(const LogoutDialog());
+                    Get.dialog(LogoutDialog());
                   },
                 ),
                 SizedBox(height: Adaptive.px(25)),

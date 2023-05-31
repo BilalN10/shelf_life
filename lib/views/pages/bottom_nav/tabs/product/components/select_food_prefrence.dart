@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/icons.dart';
+import 'package:shelf_life/controllers/product_controller.dart';
 
 class SelectFoodPrefrences extends StatefulWidget {
   const SelectFoodPrefrences({
@@ -19,6 +20,7 @@ class SelectFoodPrefrences extends StatefulWidget {
 class _SelectFoodPrefrencesState extends State<SelectFoodPrefrences> {
   String? _selectedPrefrence;
 
+  ProductController productController = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,6 +47,7 @@ class _SelectFoodPrefrencesState extends State<SelectFoodPrefrences> {
             onChanged: (newValue) {
               setState(() {
                 _selectedPrefrence = newValue;
+                productController.foodPreferance = newValue!;
               });
             },
             items: widget.category.map((categories) {

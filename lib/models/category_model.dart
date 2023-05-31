@@ -8,10 +8,15 @@ class CategoryModel {
 }
 
 List<CategoryModel> categoryList = [
-  CategoryModel(title: 'Dairy'),
-  CategoryModel(title: 'Baked'),
-  CategoryModel(title: 'Snacks'),
-  CategoryModel(title: 'Desserts'),
+  CategoryModel(title: 'Fish'),
+  CategoryModel(title: 'Fruits'),
+  CategoryModel(title: 'Coffee'),
+  CategoryModel(title: 'Meat'),
   CategoryModel(title: 'Drinks'),
-  CategoryModel(title: 'Sides'),
+  CategoryModel(title: 'Dairy'),
+  CategoryModel(title: 'Snacks'),
+  CategoryModel(title: 'Soup'),
+  CategoryModel(title: 'Fries'),
+  CategoryModel(title: 'Sushi'),
+  CategoryModel(title: 'Soda'),
 ];

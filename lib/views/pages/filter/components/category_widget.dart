@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
+import 'package:shelf_life/controllers/product_controller.dart';
 import 'package:shelf_life/models/category_model.dart';
 
 class CategoryWidget extends StatefulWidget {
@@ -14,6 +16,7 @@ class CategoryWidget extends StatefulWidget {
 }
 
 class _CategoryWidgetState extends State<CategoryWidget> {
+  ProductController productController = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -24,8 +27,27 @@ class _CategoryWidgetState extends State<CategoryWidget> {
         (index) => GestureDetector(
           onTap: () {
             setState(() {
-              categoryList[index].isCategorySelect =
-                  !categoryList[index].isCategorySelect;
+              if (productController.filterProductName.length >= 10 &&
+                  !categoryList[index].isCategorySelect) {
+                Get.snackbar(
+                    'Limit exceeded', 'You can select maximum 10 products');
+              } else {
+                categoryList[index].isCategorySelect =
+                    !categoryList[index].isCategorySelect;
+
+                if (categoryList[index].isCategorySelect) {
+                  productController.filterProductName
+                      .add(categoryList[index].title);
+
+                  print(
+                      'country add list is ${productController.filterProductName.length}  ${productController.filterProductName}');
+                } else {
+                  productController.filterProductName.removeWhere(
+                      (element) => element == categoryList[index].title);
+                  print(
+                      'country add list is ${productController.filterProductName.length}  ${productController.filterProductName}');
+                }
+              }
             });
           },
           child: Container(

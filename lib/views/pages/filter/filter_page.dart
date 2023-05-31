@@ -2,14 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:shelf_life/controllers/product_controller.dart';
 import 'package:shelf_life/views/widgets/primary_button.dart';
 
 import 'components/category_widget.dart';
 import 'components/custom_checkbox.dart';
 import 'components/price_range.dart';
 
-class FilterPage extends StatelessWidget {
-  const FilterPage({super.key});
+class FilterPage extends StatefulWidget {
+  FilterPage({super.key});
+
+  @override
+  State<FilterPage> createState() => _FilterPageState();
+}
+
+class _FilterPageState extends State<FilterPage> {
+  final ProductController productController = Get.put(ProductController());
+
+  @override
+  void initState() {
+    // productController.filterProductName.clear();
+    //  productController.maxSalary == 0.0;
+    // productController.minSalary == 0.0;
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +121,16 @@ class FilterPage extends StatelessWidget {
                   height: Adaptive.px(40),
                 ),
                 PrimaryButton(
-                  onTap: () {},
+                  onTap: () {
+                    if (productController.filterProductName.isEmpty) {
+                      Get.snackbar('Food not selected',
+                          'Please select atleast one food and less then 10');
+                    } else {
+                      productController.getFilterProduct().then((value) {
+                        Get.back();
+                      });
+                    }
+                  },
                   text: 'See Results',
                 ),
               ],

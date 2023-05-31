@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
+import 'package:shelf_life/controllers/auth_controller.dart';
 import 'package:shelf_life/views/pages/authentication/forgot_pass_page.dart';
 import 'package:shelf_life/views/pages/authentication/register_page.dart';
 import 'package:shelf_life/views/pages/bottom_nav/bottom_nav_page.dart';
@@ -20,9 +21,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController emailController = TextEditingController();
-
-  final TextEditingController passwordController = TextEditingController();
+  AuthController authController = Get.put(AuthController());
 
   bool _showSuffixIcon = false;
   bool showPass = true;
@@ -30,18 +29,18 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    passwordController.addListener(_handlePasswordInput);
+    authController.loginPassword.addListener(_handlePasswordInput);
   }
 
-  @override
-  void dispose() {
-    passwordController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   authController.loginPassword.dispose();
+  //   super.dispose();
+  // }
 
   void _handlePasswordInput() {
     setState(() {
-      _showSuffixIcon = passwordController.text.isNotEmpty;
+      _showSuffixIcon = authController.loginPassword.text.isNotEmpty;
     });
   }
 
@@ -79,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: Adaptive.px(30),
                 ),
                 CommonField(
-                  controller: emailController,
+                  controller: authController.loginEmail,
                   keyboardType: TextInputType.emailAddress,
                   prefixIcon: IconClass.emailIcon,
                   hintText: 'Email',
@@ -93,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextFormField(
                   obscureText: showPass,
-                  controller: passwordController,
+                  controller: authController.loginPassword,
                   keyboardType: TextInputType.name,
                   onChanged: (onChanged) {},
                   validator: (value) {
@@ -165,9 +164,19 @@ class _LoginPageState extends State<LoginPage> {
                             color: const Color(0xff080C2F)),
                       )),
                 ),
-                PrimaryButton(
-                  onTap: () => Get.offAll(() => const BottomNavPage()),
-                  text: 'Sign In',
+                Obx(
+                  () => authController.isLogin.value
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: ColorClass.primaryColor,
+                          ),
+                        )
+                      : PrimaryButton(
+                          onTap: () {
+                            authController.login();
+                          },
+                          text: 'Sign In',
+                        ),
                 ),
                 SizedBox(
                   height: Adaptive.px(57),

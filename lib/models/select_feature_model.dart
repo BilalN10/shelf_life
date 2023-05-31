@@ -8,9 +8,11 @@ class SelectFeatureModel {
   final List<Color> colors;
   final Color iconColor;
   final String unselectedIcon;
+  int? index;
 
   SelectFeatureModel({
     required this.image,
+    this.index,
     required this.name,
     this.value = false,
     required this.colors,
@@ -21,6 +23,7 @@ class SelectFeatureModel {
 
 List<SelectFeatureModel> selectFeatureList = [
   SelectFeatureModel(
+    index: 0,
     image: IconClass.friendly,
     name: 'Friendly Staff',
     colors: [
@@ -31,6 +34,7 @@ List<SelectFeatureModel> selectFeatureList = [
     unselectedIcon: 'assets/icons/unselectFriendly.png',
   ),
   SelectFeatureModel(
+    index: 1,
     image: IconClass.delicious,
     name: 'Delicious Food',
     colors: [
@@ -41,6 +45,7 @@ List<SelectFeatureModel> selectFeatureList = [
     unselectedIcon: 'assets/icons/unselectedDelicious.png',
   ),
   SelectFeatureModel(
+    index: 2,
     image: IconClass.quickpickup,
     name: 'Quick Pickup',
     colors: [
@@ -51,6 +56,7 @@ List<SelectFeatureModel> selectFeatureList = [
     unselectedIcon: 'assets/icons/unselectedquick.png',
   ),
   SelectFeatureModel(
+    index: 3,
     image: IconClass.bestQuality,
     name: 'Best Quality',
     colors: [

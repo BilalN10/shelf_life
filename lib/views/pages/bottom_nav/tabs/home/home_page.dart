@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
+import 'package:shelf_life/controllers/product_controller.dart';
 import 'package:shelf_life/models/food_prefrence_model.dart';
 import 'package:shelf_life/views/pages/filter/filter_page.dart';
 import 'package:shelf_life/views/pages/notification/notification_page.dart';
@@ -20,7 +21,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController searchController = TextEditingController();
-  int selectedIndex = 0;
+  int selectedIndex = -1;
+
+  ProductController productController = Get.put(ProductController());
+
+  @override
+  void initState() {
+    print('init call');
+    productController.getRecomendedProduct();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                             width: Adaptive.px(15),
                           ),
                           GestureDetector(
-                            onTap: () => Get.to(() => const FilterPage()),
+                            onTap: () => Get.to(() => FilterPage()),
                             child: Image.asset(IconClass.filter),
                           ),
                           SizedBox(
@@ -121,6 +132,9 @@ class _HomePageState extends State<HomePage> {
                                 padding: const EdgeInsets.all(2.0),
                                 child: GestureDetector(
                                   onTap: () {
+                                    productController.getProductByCategory(
+                                        foodList[index].name);
+
                                     setState(() {
                                       selectedIndex = index;
                                     });
@@ -129,7 +143,9 @@ class _HomePageState extends State<HomePage> {
                                     width: Adaptive.px(106),
                                     height: Adaptive.px(59),
                                     decoration: BoxDecoration(
-                                        color: Colors.white,
+                                        color: selectedIndex == index
+                                            ? ColorClass.primaryColor
+                                            : Colors.white,
                                         borderRadius: BorderRadius.circular(9),
                                         boxShadow: [
                                           BoxShadow(
@@ -157,7 +173,9 @@ class _HomePageState extends State<HomePage> {
                                           style: GoogleFonts.poppins(
                                               fontSize: Adaptive.px(12),
                                               fontWeight: FontWeight.w500,
-                                              color: Colors.black),
+                                              color: selectedIndex == index
+                                                  ? Colors.white
+                                                  : Colors.black),
                                         ),
                                       ],
                                     ),
@@ -182,7 +200,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    const RecommenedList(),
+                    RecommenedList(),
                     Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: Adaptive.px(20)),
@@ -195,7 +213,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    const PickupNow(),
+                    PickupNow(),
                   ],
                 ),
               ),

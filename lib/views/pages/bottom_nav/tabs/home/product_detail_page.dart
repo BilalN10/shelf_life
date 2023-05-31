@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/icons.dart';
+import 'package:shelf_life/controllers/auth_controller.dart';
 import 'package:shelf_life/controllers/item_counter_controller.dart';
+import 'package:shelf_life/models/product_model.dart';
 import 'package:shelf_life/models/recommended_model.dart';
 import 'package:shelf_life/views/widgets/custom_back_button.dart';
 import 'package:shelf_life/views/widgets/feedback_container.dart';
@@ -15,9 +17,9 @@ import 'components/counter_button.dart';
 class ProductDetailPage extends StatefulWidget {
   const ProductDetailPage({
     super.key,
-    required this.modelData,
+    required this.productModel,
   });
-  final RecommendedModel modelData;
+  final ProductModel? productModel;
 
   @override
   State<ProductDetailPage> createState() => _ProductDetailPageState();
@@ -26,6 +28,7 @@ class ProductDetailPage extends StatefulWidget {
 class _ProductDetailPageState extends State<ProductDetailPage> {
   final ItemCounterController counterController =
       Get.put(ItemCounterController());
+  AuthController authController = Get.put(AuthController());
   int selectedPrice = -1;
   @override
   Widget build(BuildContext context) {
@@ -42,8 +45,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 decoration: BoxDecoration(
                   color: Colors.black,
                   image: DecorationImage(
-                      image: AssetImage(
-                        widget.modelData.image,
+                      image: NetworkImage(
+                        widget.productModel!.mainImage!,
                       ),
                       fit: BoxFit.cover),
                   gradient: const LinearGradient(
@@ -68,12 +71,12 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           children: [
                             CircleAvatar(
                               radius: Adaptive.px(30),
-                              backgroundImage:
-                                  AssetImage(widget.modelData.profileImage),
+                              backgroundImage: NetworkImage(
+                                  widget.productModel!.profilePic!),
                             ),
                             const SizedBox(width: 10),
                             Text(
-                              widget.modelData.profileName,
+                              widget.productModel!.userName!,
                               style: GoogleFonts.poppins(
                                   fontSize: Adaptive.px(18),
                                   fontWeight: FontWeight.w500,
@@ -140,14 +143,16 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                widget.modelData.drinkName,
+                                widget.productModel!.productName!,
                                 style: GoogleFonts.poppins(
                                     fontSize: Adaptive.px(24),
                                     fontWeight: FontWeight.w600,
                                     color: Colors.black),
                               ),
                               Text(
-                                widget.modelData.price,
+                                widget.productModel!.isFixedPrice!
+                                    ? "\$ ${widget.productModel!.fixPrice!}"
+                                    : "\$ ${widget.productModel!.price_1!}",
                                 style: GoogleFonts.poppins(
                                     fontSize: Adaptive.px(24),
                                     fontWeight: FontWeight.w600,
@@ -210,7 +215,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                               Image.asset(IconClass.calendar),
                               const SizedBox(width: 5),
                               Text(
-                                widget.modelData.expireDate,
+                                widget.productModel!.date!,
                                 style: GoogleFonts.poppins(
                                   fontSize: Adaptive.px(14),
                                   fontWeight: FontWeight.w400,
@@ -225,7 +230,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                               Image.asset(IconClass.location),
                               const SizedBox(width: 5),
                               Text(
-                                widget.modelData.distance,
+                                '6m',
                                 style: GoogleFonts.poppins(
                                   fontSize: Adaptive.px(14),
                                   fontWeight: FontWeight.w400,
@@ -245,7 +250,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             ),
                           ),
                           ExpandableText(
-                            'Lorem ipsum dolor sit amet consectetur. Odio sit elit feugiat luctus tempor gravida tellus. Eleifend nulla ipsum lorem varius quis aliquam morbi vestibulum.Odio sit elit feugiat luctus tempor gravida tellus. Eleifend nulla ipsum lorem varius quis aliquam morbi vestibulum.',
+                            widget.productModel!.description!,
                             expandText: 'show more',
                             collapseText: 'show less',
                             maxLines: 3,
@@ -289,39 +294,59 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             ],
                           ),
                           SizedBox(height: Adaptive.px(10)),
-                          Text(
-                            'Select Price',
-                            style: GoogleFonts.poppins(
-                              fontSize: Adaptive.px(14),
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              selectPrice('\$3', 0),
-                              const SizedBox(width: 10),
-                              selectPrice('\$5', 1),
-                              const SizedBox(width: 10),
-                              selectPrice('\$10', 2),
-                            ],
-                          ),
+                          widget.productModel!.isFixedPrice!
+                              ? SizedBox()
+                              : Text(
+                                  'Select Price',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: Adaptive.px(14),
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                          widget.productModel!.isFixedPrice!
+                              ? SizedBox(height: Adaptive.px(10))
+                              : Row(
+                                  children: [
+                                    selectPrice(
+                                        '\$${widget.productModel!.price_1}', 0),
+                                    const SizedBox(width: 10),
+                                    selectPrice(
+                                        '\$5${widget.productModel!.price_1} ',
+                                        1),
+                                    const SizedBox(width: 10),
+                                    selectPrice(
+                                        '\$10${widget.productModel!.price_1}',
+                                        2),
+                                  ],
+                                ),
                           SizedBox(
                             height: Adaptive.px(20),
                           ),
-                          Row(
-                            children: [
-                              Expanded(
-                                  child: SecondaryButton(
-                                      onTap: () {}, text: 'Send a request')),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Expanded(
-                                  child: PrimaryButton(
-                                      onTap: () {}, text: 'Make an Offer')),
-                            ],
-                          ),
+                          authController.getUserData.userId ==
+                                  widget.productModel!.userId!
+                              ? SizedBox()
+                              : Row(
+                                  children: [
+                                    Expanded(
+                                        child: SecondaryButton(
+                                            onTap: () {
+                                              Get.snackbar('Request send',
+                                                  'Request send successfully');
+                                            },
+                                            text: 'Send a request')),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                        child: PrimaryButton(
+                                            onTap: () {
+                                              Get.snackbar('Request send',
+                                                  'Request send successfully');
+                                            },
+                                            text: 'Make an Offer')),
+                                  ],
+                                ),
                           SizedBox(
                             height: Adaptive.px(20),
                           ),

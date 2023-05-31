@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/icons.dart';
+import 'package:shelf_life/controllers/product_controller.dart';
 
 class CategoryDropDown extends StatefulWidget {
   const CategoryDropDown({
@@ -86,6 +87,7 @@ class MaterialDropDown extends StatefulWidget {
 }
 
 class _MaterialDropDownState extends State<MaterialDropDown> {
+  ProductController productController = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
@@ -103,6 +105,8 @@ class _MaterialDropDownState extends State<MaterialDropDown> {
         onChanged: (newValue) {
           setState(() {
             widget.selectedCategory = newValue;
+            productController.foodCategory = newValue!;
+            print('new value is $newValue');
           });
         },
         items: widget.widget.category.map((categories) {
