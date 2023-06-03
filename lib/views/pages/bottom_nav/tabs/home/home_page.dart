@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Category',
+                            'category'.tr,
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w600,
                               color: Colors.black,
@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Text(
-                            'Find your product quickly  ',
+                            'find_product'.tr,
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff080C2F).withOpacity(.5),
@@ -192,7 +192,7 @@ class _HomePageState extends State<HomePage> {
                       padding:
                           EdgeInsets.symmetric(horizontal: Adaptive.px(20)),
                       child: Text(
-                        'Recommended for you',
+                        'recomended_for_you'.tr,
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w600,
                           color: Colors.black,
@@ -205,7 +205,7 @@ class _HomePageState extends State<HomePage> {
                       padding:
                           EdgeInsets.symmetric(horizontal: Adaptive.px(20)),
                       child: Text(
-                        'Pick up Now',
+                        'pick_up'.tr,
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w600,
                           color: Colors.black,

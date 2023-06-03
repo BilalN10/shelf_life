@@ -34,4 +34,5 @@ class IconClass {
   static const arrowDown = 'assets/icons/arrowdown.png';
   static const bestQuality = 'assets/icons/bestquality.png';
   static const scan = 'assets/icons/scan.png';
+  static const language = 'assets/icons/language.png';
 }

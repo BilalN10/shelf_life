@@ -331,20 +331,24 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                     Expanded(
                                         child: SecondaryButton(
                                             onTap: () {
-                                              Get.snackbar('Request send',
-                                                  'Request send successfully');
+                                              Get.snackbar(
+                                                  'request_send'.tr,
+                                                  'request_send_successfully'
+                                                      .tr);
                                             },
-                                            text: 'Send a request')),
+                                            text: 'send_request'.tr)),
                                     const SizedBox(
                                       width: 10,
                                     ),
                                     Expanded(
                                         child: PrimaryButton(
                                             onTap: () {
-                                              Get.snackbar('Request send',
-                                                  'Request send successfully');
+                                              Get.snackbar(
+                                                  'request_send'.tr,
+                                                  'request_send_successfully'
+                                                      .tr);
                                             },
-                                            text: 'Make an Offer')),
+                                            text: 'make_an_offer'.tr)),
                                   ],
                                 ),
                           SizedBox(

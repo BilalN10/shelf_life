@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shelf_life/models/food_prefrence_model.dart';
 import 'package:shelf_life/models/user_model.dart';
 import 'package:shelf_life/views/pages/authentication/login_page.dart';
@@ -29,7 +30,7 @@ class AuthController extends GetxController {
     print("onedignal congigured");
     OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
 
-    OneSignal.shared.setAppId("9a863ec3-8b4f-42fd-abc2-267b81e31dd3");
+    OneSignal.shared.setAppId("87202c42-e729-4747-a8c2-3c4859626494");
     OneSignal.shared.setNotificationWillShowInForegroundHandler(
         (OSNotificationReceivedEvent event) {});
     OneSignal.shared
@@ -90,7 +91,9 @@ class AuthController extends GetxController {
             .set(userData)
             .then((value) {
           isSignUp.value = false;
-          Get.to(() => const CompleteProfilePage());
+          Get.to(() => CompleteProfilePage(
+                isDirectToFoodPreferance: false,
+              ));
         });
 
         //Get.back();
@@ -243,9 +246,11 @@ class AuthController extends GetxController {
   void signOut() async {
     log('Sign out');
     await auth.signOut().then((value) {
+      googleSignIn.signOut();
       Get.offAll(() => const LoginPage());
     });
   }
+  // <<<<============================ Update profile ==================================>>>>>
 
   RxBool isProfileUpdate = false.obs;
   updateProfile(
@@ -299,6 +304,73 @@ class AuthController extends GetxController {
     } else {
       isProfileUpdate.value = false;
 
+      ScaffoldMessenger.of(Get.context!).showSnackBar(const SnackBar(
+        content: Text('Internet connection not available'),
+        behavior: SnackBarBehavior.floating,
+      ));
+    }
+  }
+
+  // <<<<============================ Google sign in ==================================>>>>>
+  GoogleSignIn googleSignIn = GoogleSignIn(scopes: ['email']);
+
+  RxBool isGoogleSignin = false.obs;
+
+  Future<void> googleSignIN() async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+
+    if (connectivityResult != ConnectivityResult.none) {
+      try {
+        isGoogleSignin.value = true;
+
+        final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+        final GoogleSignInAuthentication googleAuth =
+            await googleUser!.authentication;
+
+        final AuthCredential credential = GoogleAuthProvider.credential(
+            idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
+
+        final UserCredential authResult =
+            await auth.signInWithCredential(credential);
+
+        if (authResult.additionalUserInfo!.isNewUser) {
+          var status = await OneSignal.shared.getDeviceState();
+          String tokenID = status!.userId!;
+
+          Map<String, dynamic> userData = {
+            'email': authResult.user!.email!,
+            'phone_number': "",
+            "user_name": authResult.user!.displayName,
+            'surname': authResult.user!.displayName,
+            'alternative_email': authResult.user!.email!,
+            'profile_pic': authResult.user!.photoURL,
+            'total_rating': 0,
+            'date_time': DateTime.now(),
+            'token_id': tokenID
+          };
+
+          await firestore
+              .collection('users')
+              .doc(auth.currentUser!.uid)
+              .set(userData)
+              .then((value) {
+            isGoogleSignin.value = false;
+
+            Get.to(() => CompleteProfilePage(
+                  isDirectToFoodPreferance: true,
+                ));
+          });
+        } else {
+          isGoogleSignin.value = false;
+
+          Get.offAll(() => const BottomNavPage());
+        }
+      } catch (e) {
+        isGoogleSignin.value = false;
+
+        print(e);
+      }
+    } else {
       ScaffoldMessenger.of(Get.context!).showSnackBar(const SnackBar(
         content: Text('Internet connection not available'),
         behavior: SnackBarBehavior.floating,

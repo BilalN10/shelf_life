@@ -6,6 +6,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
 import 'package:shelf_life/controllers/auth_controller.dart';
+import 'package:shelf_life/views/pages/bottom_nav/tabs/profile/components/language_page.dart';
 import 'package:shelf_life/views/pages/change_pass/change_pass_page.dart';
 import 'package:shelf_life/views/pages/faq/faq_page.dart';
 import 'package:shelf_life/views/pages/personal_information/personal_information_page.dart';
@@ -57,7 +58,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       flex: 2,
                     ),
                     Text(
-                      'My Profile',
+                      'my_profile'.tr,
                       style: GoogleFonts.poppins(
                           fontSize: Adaptive.px(16),
                           fontWeight: FontWeight.w600),
@@ -119,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 SizedBox(height: Adaptive.px(30)),
                                 ProfileTile(
                                   image: IconClass.personal,
-                                  title: 'Personal Information',
+                                  title: 'personal_information'.tr,
                                   onTap: () =>
                                       Get.to(() => PeronsalInformationPage(
                                             userModel: cont.getUserData,
@@ -131,7 +132,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 SizedBox(height: Adaptive.px(10)),
                 ProfileTile(
                   image: IconClass.changePassword,
-                  title: 'Change Password',
+                  title: 'change_passeord'.tr,
                   onTap: () => Get.to(() => ChangePasswordPage()),
                 ),
                 SizedBox(height: Adaptive.px(10)),
@@ -142,8 +143,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 SizedBox(height: Adaptive.px(10)),
                 ProfileTile(
+                  image: IconClass.personal,
+                  title: 'change_Language'.tr,
+                  onTap: () => Get.to(() => const LanguagePage()),
+                ),
+                SizedBox(height: Adaptive.px(10)),
+                ProfileTile(
                   image: IconClass.logout,
-                  title: 'Logout',
+                  title: 'log_out'.tr,
                   onTap: () {
                     Get.dialog(LogoutDialog());
                   },
@@ -155,7 +162,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         emailController: emailController,
                         passwordController: passwordController));
                   },
-                  text: 'Delete Account',
+                  text: 'delete_account'.tr,
                   isDeleteAccount: false,
                 ),
               ],

@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "68414250997-bgik9h1ujtulqeibkdgkn6u3r74oceuh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shelf_life_android",
+            "certificate_hash": "eeca62110d5b07d677992c2bff3e1304d7b959fb"
+          }
+        },
+        {
           "client_id": "68414250997-k01aoa3h41lanuq98sb15lt5b9e28prt.apps.googleusercontent.com",
           "client_type": 3
         }

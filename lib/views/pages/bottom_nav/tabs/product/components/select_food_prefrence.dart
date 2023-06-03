@@ -36,7 +36,7 @@ class _SelectFoodPrefrencesState extends State<SelectFoodPrefrences> {
           child: DropdownButton(
             icon: Image.asset(IconClass.arrowDown),
             hint: Text(
-              'Select Food Preferences',
+              'select_food_preferance'.tr,
               style: GoogleFonts.poppins(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,

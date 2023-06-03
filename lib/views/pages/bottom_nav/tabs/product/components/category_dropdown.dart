@@ -94,7 +94,7 @@ class _MaterialDropDownState extends State<MaterialDropDown> {
       child: DropdownButton(
         icon: Image.asset(IconClass.arrowDown),
         hint: Text(
-          'Select Category',
+          'select_category'.tr,
           style: GoogleFonts.poppins(
             fontSize: 14,
             fontWeight: FontWeight.w400,

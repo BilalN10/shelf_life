@@ -61,14 +61,14 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 SizedBox(height: Adaptive.px(68)),
                 Text(
-                  'Welcome Back!',
+                  'welcome_back'.tr,
                   style: GoogleFonts.poppins(
                       fontSize: Adaptive.px(20),
                       fontWeight: FontWeight.w600,
                       color: ColorClass.lightPrimaryColor),
                 ),
                 Text(
-                  'Sign in with your email/ phone number and password to continue.',
+                  'sign_message'.tr,
                   style: GoogleFonts.poppins(
                       fontSize: Adaptive.px(14),
                       fontWeight: FontWeight.w400,
@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                   controller: authController.loginEmail,
                   keyboardType: TextInputType.emailAddress,
                   prefixIcon: IconClass.emailIcon,
-                  hintText: 'Email',
+                  hintText: 'email'.tr,
                   onChanged: (value) {},
                   validator: (value) {
                     return;
@@ -146,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                         IconClass.password,
                         color: const Color(0xff080C2F),
                       ),
-                      hintText: 'Password',
+                      hintText: 'password'.tr,
                       hintStyle: GoogleFonts.poppins(
                         fontSize: Adaptive.px(14),
                         fontWeight: FontWeight.w400,
@@ -157,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: TextButton(
                       onPressed: () => Get.to(() => ForgotPassPage()),
                       child: Text(
-                        'Forgot Password?',
+                        'forgot_password'.tr,
                         style: GoogleFonts.poppins(
                             fontSize: Adaptive.px(12),
                             fontWeight: FontWeight.w400,
@@ -175,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                           onTap: () {
                             authController.login();
                           },
-                          text: 'Sign In',
+                          text: 'sign_in'.tr,
                         ),
                 ),
                 SizedBox(
@@ -192,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
                       width: Adaptive.w(2),
                     ),
                     Text(
-                      'Sign in with Google or Apple',
+                      'sign_in_with_google_apple'.tr,
                       style: GoogleFonts.poppins(
                           fontSize: Adaptive.px(12),
                           fontWeight: FontWeight.w400),
@@ -210,14 +210,16 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: Adaptive.px(24)),
                 SocialLogins(
                   appleLoginOnTap: () {},
-                  googleLoginOnTap: () {},
+                  googleLoginOnTap: () {
+                    authController.googleSignIN();
+                  },
                 ),
                 SizedBox(height: Adaptive.px(30)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Don’t have an account? ',
+                      'dont_have_account'.tr,
                       style: GoogleFonts.poppins(
                         fontSize: Adaptive.px(14),
                         fontWeight: FontWeight.w400,
@@ -226,7 +228,7 @@ class _LoginPageState extends State<LoginPage> {
                     TextButton(
                         onPressed: () => Get.to(() => RegisterPage()),
                         child: Text(
-                          'Sign Up',
+                          'sign_up'.tr,
                           style: GoogleFonts.poppins(
                               fontSize: Adaptive.px(14),
                               fontWeight: FontWeight.w400,

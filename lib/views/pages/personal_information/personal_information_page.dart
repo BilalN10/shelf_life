@@ -65,7 +65,7 @@ class _PeronsalInformationPageState extends State<PeronsalInformationPage> {
                           CustomBackButton(),
                           const Spacer(),
                           Text(
-                            'My Profile',
+                            'my_profile'.tr,
                             style: GoogleFonts.poppins(
                                 fontSize: Adaptive.px(16),
                                 fontWeight: FontWeight.w600),
@@ -147,7 +147,7 @@ class _PeronsalInformationPageState extends State<PeronsalInformationPage> {
                           onTap: () => Get.to(() => EditInformationPage(
                                 userModel: widget.userModel,
                               )),
-                          text: 'Edit Information'),
+                          text: 'edit_information'.tr),
                     ],
                   );
                 }),

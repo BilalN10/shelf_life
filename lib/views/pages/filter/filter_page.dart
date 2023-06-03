@@ -48,7 +48,7 @@ class _FilterPageState extends State<FilterPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Add Filters',
+                      'add_Filters'.tr,
                       style: GoogleFonts.poppins(
                           fontSize: Adaptive.px(16),
                           fontWeight: FontWeight.w700,
@@ -57,7 +57,7 @@ class _FilterPageState extends State<FilterPage> {
                     GestureDetector(
                       onTap: () => Get.back(),
                       child: Text(
-                        'Clear',
+                        'clear'.tr,
                         style: GoogleFonts.poppins(
                             fontSize: Adaptive.px(14),
                             fontWeight: FontWeight.w500,
@@ -68,7 +68,7 @@ class _FilterPageState extends State<FilterPage> {
                 ),
                 SizedBox(height: Adaptive.px(25)),
                 Text(
-                  'Preferences',
+                  'preferences'.tr,
                   style: GoogleFonts.poppins(
                       fontSize: Adaptive.px(14),
                       fontWeight: FontWeight.w600,
@@ -78,25 +78,25 @@ class _FilterPageState extends State<FilterPage> {
                   height: Adaptive.px(12),
                 ),
                 CustomCheckBox(
-                  title: 'Recently Popular',
+                  title: 'recently_Popular'.tr,
                 ),
                 SizedBox(
                   height: Adaptive.px(12),
                 ),
                 CustomCheckBox(
-                  title: 'Latest Addition',
+                  title: 'latest_Addition'.tr,
                 ),
                 SizedBox(
                   height: Adaptive.px(12),
                 ),
                 CustomCheckBox(
-                  title: 'Most Authoritative User',
+                  title: 'most_authoritative_user'.tr,
                 ),
                 SizedBox(
                   height: Adaptive.px(20),
                 ),
                 Text(
-                  'Categories',
+                  'categories'.tr,
                   style: GoogleFonts.poppins(
                       fontSize: Adaptive.px(14),
                       fontWeight: FontWeight.w600,
@@ -110,7 +110,7 @@ class _FilterPageState extends State<FilterPage> {
                   height: Adaptive.px(20),
                 ),
                 Text(
-                  'Price Range',
+                  'price_range'.tr,
                   style: GoogleFonts.poppins(
                       fontSize: Adaptive.px(14),
                       fontWeight: FontWeight.w600,
@@ -123,15 +123,15 @@ class _FilterPageState extends State<FilterPage> {
                 PrimaryButton(
                   onTap: () {
                     if (productController.filterProductName.isEmpty) {
-                      Get.snackbar('Food not selected',
-                          'Please select atleast one food and less then 10');
+                      Get.snackbar(
+                          'food_not_selected'.tr, 'please_select_food'.tr);
                     } else {
                       productController.getFilterProduct().then((value) {
                         Get.back();
                       });
                     }
                   },
-                  text: 'See Results',
+                  text: 'see_Results'.tr,
                 ),
               ],
             ),

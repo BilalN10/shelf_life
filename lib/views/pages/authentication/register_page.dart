@@ -46,14 +46,14 @@ class RegisterPage extends StatelessWidget with ValidationMixin {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Welcome To Shelf!',
+                      'welcome_to_shelf'.tr,
                       style: GoogleFonts.poppins(
                           fontSize: Adaptive.px(20),
                           fontWeight: FontWeight.w600,
                           color: ColorClass.lightPrimaryColor),
                     ),
                     Text(
-                      'To get started, fill out the Sign up form.',
+                      'to_get_start'.tr,
                       style: GoogleFonts.poppins(
                           fontSize: Adaptive.px(14),
                           fontWeight: FontWeight.w400,
@@ -68,9 +68,7 @@ class RegisterPage extends StatelessWidget with ValidationMixin {
                       prefixIcon: IconClass.emailIcon,
                       onChanged: (onChanged) {},
                       validator: (email) {
-                        return isEmailValid(email!)
-                            ? null
-                            : 'Enter valid email';
+                        return isEmailValid(email!) ? null : 'valid_email'.tr;
                       },
                       hintText: 'Email',
                     ),
@@ -85,9 +83,9 @@ class RegisterPage extends StatelessWidget with ValidationMixin {
                       validator: (password) {
                         return isPasswordValid(password!)
                             ? null
-                            : 'Enter password that contains minimum 8 letters';
+                            : 'valid_password'.tr;
                       },
-                      hintText: 'Password',
+                      hintText: 'password'.tr,
                     ),
                     SizedBox(
                       height: Adaptive.px(15),
@@ -101,20 +99,20 @@ class RegisterPage extends StatelessWidget with ValidationMixin {
                         if (value == authController.passwordCont.text) {
                           return null;
                         } else {
-                          return 'Password does not match';
+                          return 'password_not_match'.tr;
                         }
                       },
-                      hintText: 'Re-type Password',
+                      hintText: 'retype_password'.tr,
                     ),
                     SizedBox(
                       height: Adaptive.px(15),
                     ),
                     PhoneTextField(
-                      hintText: 'Mobile Number',
+                      hintText: 'mobile_number'.tr,
                       phoneController: authController.phoneNumber,
                       maskFormatter: maskFormatter,
                       validator: (phone) {
-                        return isFullNameValid(phone!) ? null : 'requried';
+                        return isFullNameValid(phone!) ? null : 'requried'.tr;
                       },
                     ),
                     SizedBox(
@@ -133,7 +131,7 @@ class RegisterPage extends StatelessWidget with ValidationMixin {
                                   authController.storeSignUp();
                                 }
                               },
-                              text: 'Sign UP',
+                              text: 'sign_up'.tr,
                             ),
                     ),
                     SizedBox(
@@ -150,7 +148,7 @@ class RegisterPage extends StatelessWidget with ValidationMixin {
                           width: Adaptive.w(2),
                         ),
                         Text(
-                          'Sign in with Google or Apple',
+                          'sign_in_with_google_apple'.tr,
                           style: GoogleFonts.poppins(
                               fontSize: Adaptive.px(12),
                               fontWeight: FontWeight.w400),
@@ -177,7 +175,7 @@ class RegisterPage extends StatelessWidget with ValidationMixin {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Don’t have an account? ',
+                          'dont_have_account'.tr,
                           style: GoogleFonts.poppins(
                             fontSize: Adaptive.px(14),
                             fontWeight: FontWeight.w400,
@@ -186,7 +184,7 @@ class RegisterPage extends StatelessWidget with ValidationMixin {
                         TextButton(
                             onPressed: () => Get.back(),
                             child: Text(
-                              'Sign In',
+                              'sign_in'.tr,
                               style: GoogleFonts.poppins(
                                   fontSize: Adaptive.px(14),
                                   fontWeight: FontWeight.w400,

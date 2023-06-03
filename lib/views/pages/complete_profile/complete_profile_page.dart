@@ -19,7 +19,9 @@ import 'package:shelf_life/views/widgets/primary_button.dart';
 import 'components/profile_progress_line.dart';
 
 class CompleteProfilePage extends StatefulWidget {
-  const CompleteProfilePage({super.key});
+  CompleteProfilePage({super.key, required this.isDirectToFoodPreferance});
+
+  bool isDirectToFoodPreferance;
 
   @override
   State<CompleteProfilePage> createState() => _CompleteProfilePageState();
@@ -31,6 +33,15 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
   // final TextEditingController surnameController = TextEditingController();
   // final TextEditingController alterEmailController = TextEditingController();
   bool isFoodPrefrence = false;
+
+  @override
+  void initState() {
+    setState(() {
+      isFoodPrefrence = widget.isDirectToFoodPreferance;
+    });
+    super.initState();
+  }
+
   File? image;
   Image? myImage;
   Future pickImage(ImageSource sr) async {
@@ -79,7 +90,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
                 const Icon(Icons.image, color: ColorClass.primaryColor),
                 Padding(
                   padding: const EdgeInsets.all(7.0),
-                  child: Text('Gallery',
+                  child: Text('gallery'.tr,
                       style: Theme.of(context).textTheme.titleMedium!),
                 ),
               ],
@@ -95,7 +106,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
                 const Icon(Icons.camera_alt, color: ColorClass.primaryColor),
                 Padding(
                   padding: const EdgeInsets.all(7.0),
-                  child: Text('Camera',
+                  child: Text('camera'.tr,
                       style: Theme.of(context).textTheme.titleMedium!),
                 ),
               ],
@@ -108,7 +119,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
                 const Icon(Icons.cancel, color: ColorClass.primaryColor),
                 Padding(
                   padding: const EdgeInsets.all(7.0),
-                  child: Text('Cancel',
+                  child: Text('cancel'.tr,
                       style: Theme.of(context).textTheme.titleMedium!),
                 ),
               ],
@@ -144,7 +155,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
                     CustomBackButton(),
                     const Spacer(),
                     Text(
-                      'Setup Profile',
+                      'setup_profile'.tr,
                       style: GoogleFonts.poppins(
                           fontSize: Adaptive.px(16),
                           fontWeight: FontWeight.w600,
@@ -162,7 +173,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
                     ? Column(
                         children: [
                           Text(
-                            'Tell Us About Your Food\nPreferences',
+                            'tell_us'.tr,
                             style: GoogleFonts.poppins(
                                 fontSize: Adaptive.px(24),
                                 fontWeight: FontWeight.w600,
@@ -271,7 +282,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
                                     ),
                                     child: Center(
                                       child: Text(
-                                        'Back',
+                                        'back'.tr,
                                         style: GoogleFonts.poppins(
                                           fontSize: Adaptive.px(16),
                                           fontWeight: FontWeight.w500,
@@ -303,7 +314,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
                                                     .addPreferencesFood();
                                               }
                                             },
-                                            text: 'Finish')),
+                                            text: 'finish'.tr)),
                               ),
                             ],
                           ),
@@ -324,9 +335,9 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
                               validator: (name) {
                                 return isFullNameValid(name!)
                                     ? null
-                                    : 'requried';
+                                    : 'requried'.tr;
                               },
-                              hintText: 'Name',
+                              hintText: 'name'.tr,
                             ),
                             SizedBox(height: Adaptive.px(15)),
                             CommonField(
@@ -337,9 +348,9 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
                               validator: (name) {
                                 return isFullNameValid(name!)
                                     ? null
-                                    : 'requried';
+                                    : 'requried'.tr;
                               },
-                              hintText: 'Surname',
+                              hintText: 'surname'.tr,
                             ),
                             SizedBox(height: Adaptive.px(15)),
                             CommonField(
@@ -350,9 +361,9 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
                               validator: (email) {
                                 return isEmailValid(email!)
                                     ? null
-                                    : 'Enter valid email';
+                                    : 'valid_email'.tr;
                               },
-                              hintText: 'Alternative E-mail',
+                              hintText: 'alternative_email'.tr,
                             ),
                             SizedBox(height: Adaptive.px(60)),
                             Row(
@@ -372,7 +383,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
                                     ),
                                     child: Center(
                                       child: Text(
-                                        'Skip',
+                                        'skip'.tr,
                                         style: GoogleFonts.poppins(
                                           fontSize: Adaptive.px(16),
                                           fontWeight: FontWeight.w500,
@@ -416,7 +427,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage>
                                                 }
                                               }
                                             },
-                                            text: 'Next'),
+                                            text: 'next'.tr),
                                       )),
                               ],
                             ),

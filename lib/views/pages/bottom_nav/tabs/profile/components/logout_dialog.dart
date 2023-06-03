@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/controllers/auth_controller.dart';
-import 'package:shelf_life/views/pages/authentication/login_page.dart';
 import 'package:shelf_life/views/widgets/primary_button.dart';
 
 class LogoutDialog extends StatelessWidget {
@@ -31,7 +30,7 @@ class LogoutDialog extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'Log Out',
+                      'log_out'.tr,
                       style: GoogleFonts.poppins(
                           fontSize: Adaptive.px(16),
                           fontWeight: FontWeight.w600,
@@ -39,7 +38,7 @@ class LogoutDialog extends StatelessWidget {
                     ),
                     SizedBox(height: Adaptive.px(15)),
                     Text(
-                      'Are you sure want to log out? ',
+                      'you_want_to_logout'.tr,
                       style: GoogleFonts.poppins(
                           fontSize: Adaptive.px(14),
                           fontWeight: FontWeight.w400,
@@ -61,7 +60,7 @@ class LogoutDialog extends StatelessWidget {
                                 color: const Color(0xffE9E9E9)),
                             child: Center(
                               child: Text(
-                                'Cancel',
+                                'cancel'.tr,
                                 style: GoogleFonts.poppins(
                                     fontSize: Adaptive.px(16),
                                     fontWeight: FontWeight.w500,
@@ -79,7 +78,7 @@ class LogoutDialog extends StatelessWidget {
                             onTap: () {
                               authController.signOut();
                             },
-                            text: 'Logout',
+                            text: 'log_out'.tr,
                           ),
                         )
                       ],

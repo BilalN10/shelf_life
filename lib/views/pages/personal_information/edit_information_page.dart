@@ -78,7 +78,7 @@ class _EditInformationPageState extends State<EditInformationPage>
                 const Icon(Icons.image, color: ColorClass.primaryColor),
                 Padding(
                   padding: const EdgeInsets.all(7.0),
-                  child: Text('Gallery',
+                  child: Text('gallery'.tr,
                       style: Theme.of(context).textTheme.titleMedium!),
                 ),
               ],
@@ -94,7 +94,7 @@ class _EditInformationPageState extends State<EditInformationPage>
                 const Icon(Icons.camera_alt, color: ColorClass.primaryColor),
                 Padding(
                   padding: const EdgeInsets.all(7.0),
-                  child: Text('Camera',
+                  child: Text('camera'.tr,
                       style: Theme.of(context).textTheme.titleMedium!),
                 ),
               ],
@@ -107,7 +107,7 @@ class _EditInformationPageState extends State<EditInformationPage>
                 const Icon(Icons.cancel, color: ColorClass.primaryColor),
                 Padding(
                   padding: const EdgeInsets.all(7.0),
-                  child: Text('Cancel',
+                  child: Text('cancel'.tr,
                       style: Theme.of(context).textTheme.titleMedium!),
                 ),
               ],
@@ -146,7 +146,7 @@ class _EditInformationPageState extends State<EditInformationPage>
                     CustomBackButton(),
                     const Spacer(),
                     Text(
-                      'Edit Information',
+                      'edit_information'.tr,
                       style: GoogleFonts.poppins(
                           fontSize: Adaptive.px(16),
                           fontWeight: FontWeight.w600,
@@ -172,7 +172,7 @@ class _EditInformationPageState extends State<EditInformationPage>
                         validator: (validator) {
                           return isFullNameValid(validator!)
                               ? null
-                              : 'requried';
+                              : 'requried'.tr;
                         },
                         hintText: '',
                       ),
@@ -185,7 +185,7 @@ class _EditInformationPageState extends State<EditInformationPage>
                         validator: (validator) {
                           return isFullNameValid(validator!)
                               ? null
-                              : 'requried';
+                              : 'requried'.tr;
                         },
                         hintText: '',
                       ),
@@ -198,14 +198,16 @@ class _EditInformationPageState extends State<EditInformationPage>
                         validator: (validator) {
                           return isEmailValid(validator!)
                               ? null
-                              : 'Enter valid email';
+                              : 'valid_email'.tr;
                         },
                         hintText: '',
                       ),
                       SizedBox(height: Adaptive.px(15)),
                       PhoneTextField(
                           validator: (phone) {
-                            return isFullNameValid(phone!) ? null : 'requried';
+                            return isFullNameValid(phone!)
+                                ? null
+                                : 'requried'.tr;
                           },
                           phoneController: phoneController,
                           maskFormatter: maskFormatter,
@@ -228,7 +230,7 @@ class _EditInformationPageState extends State<EditInformationPage>
                                         file: image);
                                   }
                                 },
-                                text: 'Save'),
+                                text: 'save'.tr),
                       ),
                       SizedBox(height: Adaptive.h(2)),
                     ],

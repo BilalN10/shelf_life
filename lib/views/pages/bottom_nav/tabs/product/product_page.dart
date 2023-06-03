@@ -44,7 +44,7 @@ class _ProductPageState extends State<ProductPage> {
                   CustomBackButton(),
                   const Spacer(),
                   Text(
-                    'Product List',
+                    'product_list'.tr,
                     style: GoogleFonts.poppins(
                         fontSize: Adaptive.px(16), fontWeight: FontWeight.w600),
                   ),
@@ -155,12 +155,16 @@ class _ProductPageState extends State<ProductPage> {
                                                 ],
                                               )),
                                           child: Center(
-                                            child: Text(
-                                              'View',
-                                              style: GoogleFonts.poppins(
-                                                  fontSize: Adaptive.px(12),
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.white),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(2),
+                                              child: Text(
+                                                'view'.tr,
+                                                textAlign: TextAlign.center,
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: Adaptive.px(12),
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.white),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -180,7 +184,7 @@ class _ProductPageState extends State<ProductPage> {
               ),
               PrimaryButton(
                   onTap: () => Get.to(() => const AddProductPage()),
-                  text: 'Add Product'),
+                  text: 'add_product'.tr),
             ],
           ),
         ),

@@ -65,8 +65,8 @@ class _AddProductPageState extends State<AddProductPage> with ValidationMixin {
   ];
   int _selectedIndex = 0;
   final radioText = [
-    'Fixed Price',
-    'Offer Price',
+    'fixed_price'.tr,
+    'offer_price'.tr,
   ];
   DateTime now = DateTime.now();
   Future<void> _selectDate(BuildContext context) async {
@@ -150,7 +150,7 @@ class _AddProductPageState extends State<AddProductPage> with ValidationMixin {
                         CustomBackButton(),
                         const Spacer(),
                         Text(
-                          'Add Product',
+                          'add_product'.tr,
                           style: GoogleFonts.poppins(
                               fontSize: Adaptive.px(16),
                               fontWeight: FontWeight.w600),
@@ -172,7 +172,7 @@ class _AddProductPageState extends State<AddProductPage> with ValidationMixin {
                       validator: (validator) {
                         return isFullNameValid(validator!) ? null : 'requried';
                       },
-                      hintText: 'Product Name',
+                      hintText: 'product_name'.tr,
                     ),
                     SizedBox(
                       height: Adaptive.px(15),
@@ -193,7 +193,7 @@ class _AddProductPageState extends State<AddProductPage> with ValidationMixin {
                     ),
                     SizedBox(height: Adaptive.px(15)),
                     Text(
-                      'Select Features',
+                      'feature'.tr,
                       style: GoogleFonts.poppins(
                           fontSize: Adaptive.px(16),
                           fontWeight: FontWeight.w600),
@@ -313,11 +313,11 @@ class _AddProductPageState extends State<AddProductPage> with ValidationMixin {
                       validator: (validator) {
                         return isFullNameValid(validator!) ? null : 'requried';
                       },
-                      hintText: 'Quantity',
+                      hintText: 'quantity'.tr,
                     ),
                     SizedBox(height: Adaptive.px(15)),
                     Text(
-                      'Select Price Options:',
+                      'price_option'.tr,
                       style: GoogleFonts.poppins(
                           fontSize: Adaptive.px(16),
                           fontWeight: FontWeight.w600),
@@ -365,9 +365,9 @@ class _AddProductPageState extends State<AddProductPage> with ValidationMixin {
                                   return productController.isFixedPrice &&
                                           isFullNameValid(validator!)
                                       ? null
-                                      : 'requried';
+                                      : 'requried'.tr;
                                 },
-                                hintText: 'Price',
+                                hintText: 'price'.tr,
                                 isPrefix: false,
                               ),
                               SizedBox(
@@ -386,9 +386,9 @@ class _AddProductPageState extends State<AddProductPage> with ValidationMixin {
                                   return !productController.isFixedPrice &&
                                           isFullNameValid(validator!)
                                       ? null
-                                      : 'requried';
+                                      : 'requried'.tr;
                                 },
-                                hintText: 'Price',
+                                hintText: 'price'.tr,
                                 isPrefix: false,
                               ),
                               SizedBox(
@@ -403,9 +403,9 @@ class _AddProductPageState extends State<AddProductPage> with ValidationMixin {
                                   return !productController.isFixedPrice &&
                                           isFullNameValid(validator!)
                                       ? null
-                                      : 'requried';
+                                      : 'requried'.tr;
                                 },
-                                hintText: 'Price',
+                                hintText: 'price'.tr,
                                 isPrefix: false,
                               ),
                               SizedBox(
@@ -424,9 +424,9 @@ class _AddProductPageState extends State<AddProductPage> with ValidationMixin {
                                   return !productController.isFixedPrice &&
                                           isFullNameValid(validator!)
                                       ? null
-                                      : 'requried';
+                                      : 'requried'.tr;
                                 },
-                                hintText: 'Price',
+                                hintText: 'price'.tr,
                                 isPrefix: false,
                               ),
                               SizedBox(
@@ -545,20 +545,21 @@ class _AddProductPageState extends State<AddProductPage> with ValidationMixin {
                               onTap: () {
                                 if (_key.currentState!.validate()) {
                                   if (productController.foodCategory.isEmpty) {
-                                    Get.snackbar('Product category not select',
-                                        'Please select the product category');
+                                    Get.snackbar(
+                                        'product_catrgory_not_select'.tr,
+                                        'select_product_category'.tr);
                                   } else if (productController
                                       .foodPreferance.isEmpty) {
                                     Get.snackbar(
-                                        'Product preferances not select',
-                                        'Please select the product preferances');
+                                        'product_preferances_not_select'.tr,
+                                        'select_product_preferances'.tr);
                                   } else if (productController.date.isEmpty) {
-                                    Get.snackbar('Expiry date not select',
-                                        'Please select the expiry date');
+                                    Get.snackbar('expiry_date_not_select'.tr,
+                                        'select_expiry_date'.tr);
                                   } else if (productController
                                       .imageList.isEmpty) {
-                                    Get.snackbar('Product image not select',
-                                        'Please select atleast one product image');
+                                    Get.snackbar('product_image_not_select'.tr,
+                                        'select_product_image'.tr);
                                   } else {
                                     productController.addProduct(
                                         Get.put(AuthController()).getUserData);
@@ -567,7 +568,7 @@ class _AddProductPageState extends State<AddProductPage> with ValidationMixin {
                                   print('not validate');
                                 }
                               },
-                              text: 'Add Product',
+                              text: 'add_product'.tr,
                             ),
                     ),
                     SizedBox(
@@ -623,7 +624,7 @@ class _AddProductPageState extends State<AddProductPage> with ValidationMixin {
                               color: Colors.grey,
                             ),
                             Text(
-                              'Add Photos',
+                              'add_photo'.tr,
                               style: GoogleFonts.poppins(
                                   fontSize: Adaptive.px(10),
                                   fontWeight: FontWeight.w500),

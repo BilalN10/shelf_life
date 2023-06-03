@@ -21,21 +21,18 @@ class _OnboardPageState extends State<OnboardPage> {
   List<Map<String, String>> splashData = [
     {
       "image": "assets/icons/onboarding1.png",
-      "title": "Welcome to Shelf Life! ",
-      "description":
-          " A platform dedicated to helping individuals to reduce food waste and promote sustainable food practices. ",
+      "title": "welcome".tr,
+      "description": "onboarding".tr,
     },
     {
       "image": 'assets/icons/onboarding2.png',
-      "title": "Welcome to Shelf Life! ",
-      "description":
-          " A platform dedicated to helping individuals to reduce food waste and promote sustainable food practices. "
+      "title": "welcome".tr,
+      "description": "onboarding".tr,
     },
     {
       "image": "assets/icons/onboarding3.png",
-      "title": "Welcome to Shelf Life! ",
-      "description":
-          " A platform dedicated to helping individuals to reduce food waste and promote sustainable food practices. "
+      "title": "welcome".tr,
+      "description": "onboarding".tr,
     }
   ];
   @override

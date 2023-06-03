@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:shelf_life/constants/colors.dart';
 import 'package:shelf_life/constants/icons.dart';
+import 'package:shelf_life/controllers/auth_controller.dart';
 
 class SocialLogins extends StatelessWidget {
-  const SocialLogins({
+  SocialLogins({
     super.key,
     required this.appleLoginOnTap,
     required this.googleLoginOnTap,
   });
   final VoidCallback googleLoginOnTap;
   final VoidCallback appleLoginOnTap;
+  final AuthController authController = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,19 +29,27 @@ class SocialLogins extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(IconClass.google),
-                const SizedBox(width: 10),
-                Text(
-                  'Google',
-                  style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: const Color(0xff080C2F)),
-                ),
-              ],
+            child: Center(
+              child: Obx(
+                () => authController.isGoogleSignin.value
+                    ? const CircularProgressIndicator(
+                        color: ColorClass.primaryColor,
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(IconClass.google),
+                          const SizedBox(width: 10),
+                          Text(
+                            'Google',
+                            style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xff080C2F)),
+                          ),
+                        ],
+                      ),
+              ),
             ),
           ),
         ),

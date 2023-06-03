@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:shelf_life/check_home.dart';
 import 'package:shelf_life/controllers/auth_controller.dart';
 import 'package:shelf_life/views/pages/initial_root/initial_root.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shelf_life/bindings/auth_bindings.dart';
+import 'package:shelf_life/languages/languages.dart';
+import 'package:shelf_life/views/pages/splash/splash_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +39,9 @@ class _MyAppState extends State<MyApp> {
       builder: (context, orientation, screenType) {
         return GetMaterialApp(
           initialBinding: AuthBinding(),
+          locale: Locale('en', 'US'),
+          fallbackLocale: const Locale('en', 'US'),
+          translations: Languages(),
           debugShowCheckedModeBanner: false,
           home: const InitialRoot(),
         );

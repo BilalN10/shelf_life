@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shelf_life/constants/icons.dart';
@@ -31,7 +32,7 @@ class ChangePasswordPage extends StatelessWidget {
                     CustomBackButton(),
                     const Spacer(),
                     Text(
-                      'Change Password',
+                      'change_passeord'.tr,
                       style: GoogleFonts.poppins(
                           fontSize: Adaptive.px(16),
                           fontWeight: FontWeight.w600),
@@ -50,7 +51,7 @@ class ChangePasswordPage extends StatelessWidget {
                   validator: (validator) {
                     return;
                   },
-                  hintText: 'Enter old password',
+                  hintText: 'enter_old_password'.tr,
                 ),
                 SizedBox(
                   height: Adaptive.px(10),
@@ -63,10 +64,10 @@ class ChangePasswordPage extends StatelessWidget {
                   validator: (validator) {
                     return;
                   },
-                  hintText: 'Set new password',
+                  hintText: 'set_new_password'.tr,
                 ),
                 SizedBox(height: Adaptive.px(35)),
-                PrimaryButton(onTap: () {}, text: 'Change Password')
+                PrimaryButton(onTap: () {}, text: 'change_passeord'.tr)
               ],
             ),
           ),
